@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="demo">
-        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+	<wb-module deploy-name="demo">
         <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main"/>
@@ -15,9 +14,6 @@
         <dependent-module archiveName="pay-framework-core-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/pay-framework-core/pay-framework-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="pay-framework-base-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/pay-framework-base/pay-framework-base">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="pay-framework-web-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/pay-framework-web/pay-framework-web">
             <dependency-type>uses</dependency-type>
         </dependent-module>
@@ -27,7 +23,10 @@
         <dependent-module archiveName="pay-framework-jms-0.0.1-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/pay-framework-jms/pay-framework-jms">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <property name="context-root" value="demo"/>
-        <property name="java-output-path" value="/demo/build/classes"/>
-    </wb-module>
+        <dependent-module archiveName="pay-framework-base-0.0.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/pay-framework-base/pay-framework-base">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+		<property name="context-root" value="demo"/>
+		<property name="java-output-path" value="/demo/build/classes"/>
+	</wb-module>
 </project-modules>

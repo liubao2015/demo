@@ -14,3 +14,26 @@
  *
  */
 package com.gigold.pay.demo.service;
+
+import com.gigold.pay.framework.core.Code;
+
+enum CodeItem implements Code{
+    
+    //bia
+    _FAIL("D0000");
+   
+    
+    private String value;
+    
+    
+    private CodeItem(String value){
+        this.value = value;
+        
+    }
+    
+    
+    @Override
+    public  String toString(){
+        return this.value;
+    }
+}

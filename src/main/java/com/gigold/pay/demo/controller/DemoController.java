@@ -20,6 +20,8 @@ import com.gigold.pay.demo.bo.Person;
 import com.gigold.pay.demo.service.DemoService;
 import com.gigold.pay.framework.base.log.impl.BizLogger;
 import com.gigold.pay.framework.core.SysCode;
+import com.gigold.pay.framework.core.exception.AbortException;
+import com.gigold.pay.framework.core.exception.PendingException;
 import com.gigold.pay.framework.web.ResponseDto;
 
 /**
@@ -51,12 +53,12 @@ public class DemoController  {
      * @throws Exception
      */
     @RequestMapping(value = "/query.do")
-    public @ResponseBody QueryDemoResponseDto query(@RequestBody QueryDemoDto dto)  {
+    public @ResponseBody QueryDemoResDto query(@RequestBody QueryDemoReqDto dto)  {
         
         BizLogger.info("调用query：");
         
         dto.validate();
-        QueryDemoResponseDto res = new QueryDemoResponseDto();
+        QueryDemoResDto res = new QueryDemoResDto();
         Person p=demoService.query(dto.getPerson().getName());
         BizLogger.info("传入的参数"+dto.getPerson().getName());
         if(p!= null){
@@ -69,30 +71,82 @@ public class DemoController  {
     }
     
     @RequestMapping(value = "/insert.do")
-    public @ResponseBody QueryDemoResponseDto insert(HttpSession session)  {
+    public @ResponseBody QueryDemoResDto insert(HttpSession session)  {
         
         System.out.println("调用insert：");
         session.setAttribute("test", "陈志铉");
         session.setAttribute("test1", "czx");
-        QueryDemoResponseDto res = new QueryDemoResponseDto();
+        QueryDemoResDto res = new QueryDemoResDto();
         res.setRspCd(SysCode.SUCCESS);       
         return res;
     }
     
     
     @RequestMapping(value = "/get.do")
-    public @ResponseBody QueryDemoResponseDto get(HttpSession session)  {
+    public @ResponseBody QueryDemoResDto get(HttpSession session)  {
         System.out.println("调用get：");
         String test = (String)session.getAttribute("test");
         String test1 = (String)session.getAttribute("test1");
         System.out.println(test);
         System.out.println(test1);
-        QueryDemoResponseDto res = new QueryDemoResponseDto();
+        QueryDemoResDto res = new QueryDemoResDto();
         res.setRspCd(SysCode.SUCCESS);
         
         return res;
     }
 
     
+    @RequestMapping(value = "/add.do")
+    public @ResponseBody QueryDemoResDto add()  {
+        System.out.println("调用add：");
+        Person p = new Person();
+        p.setName("事务失败");
+        QueryDemoResDto res = new QueryDemoResDto();
+        try {
+            demoService.addPerson(p);
+            res.setRspCd(SysCode.SUCCESS);
+        } catch (AbortException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            res.setRspCd(SysCode.SYS_FAIL);
+        }        
+        return res;
+    }
+    
+    
+    @RequestMapping(value = "/add1.do")
+    public @ResponseBody QueryDemoResDto add1()  {
+        System.out.println("调用add1：");
+        Person p = new Person();
+        p.setName("事务成功");
+        QueryDemoResDto res = new QueryDemoResDto();
+        try {
+            demoService.addPerson1(p);
+            res.setRspCd(SysCode.SUCCESS);
+        } catch (AbortException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            res.setRspCd(SysCode.SYS_FAIL);
+        }        
+        return res;
+    }
+    
+    
+    @RequestMapping(value = "/add2.do")
+    public @ResponseBody QueryDemoResDto add2()  {
+        System.out.println("调用add1：");
+        Person p = new Person();
+        p.setName("事务成功");
+        QueryDemoResDto res = new QueryDemoResDto();
+        try {
+            demoService.addPerson2(p);
+            res.setRspCd(SysCode.SUCCESS);
+        } catch (PendingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            res.setRspCd(SysCode.SYS_FAIL);
+        }        
+        return res;
+    }
 }
 

@@ -4,8 +4,8 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	id="WebApp_ID" version="2.5">
 	<display-name>name</display-name>    <!-- spring配置文件路径 -->
-	
-	
+
+
 
 	<!-- 字符编码过滤器 -->
 	<filter>
@@ -64,7 +64,7 @@
 		<filter-name>MemcachedSessionFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 
 	<welcome-file-list>
 		<welcome-file>index.xhtml</welcome-file>

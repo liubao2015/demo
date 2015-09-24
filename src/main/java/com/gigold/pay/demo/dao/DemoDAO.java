@@ -20,4 +20,5 @@ import com.gigold.pay.demo.bo.Person;
 
 public interface DemoDAO {
   public Person search(String name);
+  public void addPerson(Person p);
 }
