@@ -73,7 +73,7 @@ public class DemoController  {
     @RequestMapping(value = "/insert.do")
     public @ResponseBody QueryDemoResDto insert(HttpSession session)  {
         
-        System.out.println("调用insert：");
+        BizLogger.info("调用insert：");
         session.setAttribute("test", "陈志铉");
         session.setAttribute("test1", "czx");
         QueryDemoResDto res = new QueryDemoResDto();
@@ -84,11 +84,11 @@ public class DemoController  {
     
     @RequestMapping(value = "/get.do")
     public @ResponseBody QueryDemoResDto get(HttpSession session)  {
-        System.out.println("调用get：");
+        BizLogger.info("调用get：");
         String test = (String)session.getAttribute("test");
         String test1 = (String)session.getAttribute("test1");
-        System.out.println(test);
-        System.out.println(test1);
+        BizLogger.info(test);
+        BizLogger.info(test1);
         QueryDemoResDto res = new QueryDemoResDto();
         res.setRspCd(SysCode.SUCCESS);
         
@@ -98,7 +98,7 @@ public class DemoController  {
     
     @RequestMapping(value = "/add.do")
     public @ResponseBody QueryDemoResDto add()  {
-        System.out.println("调用add：");
+        BizLogger.info("调用add：");
         Person p = new Person();
         p.setName("事务失败");
         QueryDemoResDto res = new QueryDemoResDto();
@@ -106,8 +106,7 @@ public class DemoController  {
             demoService.addPerson(p);
             res.setRspCd(SysCode.SUCCESS);
         } catch (AbortException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+          
             res.setRspCd(SysCode.SYS_FAIL);
         }        
         return res;
@@ -116,7 +115,7 @@ public class DemoController  {
     
     @RequestMapping(value = "/add1.do")
     public @ResponseBody QueryDemoResDto add1()  {
-        System.out.println("调用add1：");
+        BizLogger.info("调用add1：");
         Person p = new Person();
         p.setName("事务成功");
         QueryDemoResDto res = new QueryDemoResDto();
@@ -125,7 +124,7 @@ public class DemoController  {
             res.setRspCd(SysCode.SUCCESS);
         } catch (AbortException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+          
             res.setRspCd(SysCode.SYS_FAIL);
         }        
         return res;
@@ -134,7 +133,7 @@ public class DemoController  {
     
     @RequestMapping(value = "/add2.do")
     public @ResponseBody QueryDemoResDto add2()  {
-        System.out.println("调用add1：");
+        BizLogger.info("调用add1：");
         Person p = new Person();
         p.setName("事务成功");
         QueryDemoResDto res = new QueryDemoResDto();
@@ -142,8 +141,7 @@ public class DemoController  {
             demoService.addPerson2(p);
             res.setRspCd(SysCode.SUCCESS);
         } catch (PendingException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+          
             res.setRspCd(SysCode.SYS_FAIL);
         }        
         return res;
