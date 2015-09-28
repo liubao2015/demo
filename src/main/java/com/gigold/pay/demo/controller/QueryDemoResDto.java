@@ -9,6 +9,7 @@ package com.gigold.pay.demo.controller;
 
 import com.gigold.pay.demo.bo.Person;
 import com.gigold.pay.framework.web.ResponseDto;
+import com.github.pagehelper.PageInfo;
 
 /**
  * Title: QueryDemoResponseDto<br/>
@@ -19,6 +20,21 @@ import com.gigold.pay.framework.web.ResponseDto;
  *
  */
 public class QueryDemoResDto extends ResponseDto{
+    private PageInfo pageInfo;
+    /**
+     * @return the pageInfo
+     */
+    public PageInfo getPageInfo() {
+        return pageInfo;
+    }
+
+    /**
+     * @param pageInfo the pageInfo to set
+     */
+    public void setPageInfo(PageInfo pageInfo) {
+        this.pageInfo = pageInfo;
+    }
+
     private Person person;
 
     /**

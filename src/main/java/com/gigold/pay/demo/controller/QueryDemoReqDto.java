@@ -9,6 +9,7 @@ package com.gigold.pay.demo.controller;
 
 import com.gigold.pay.demo.bo.Person;
 import com.gigold.pay.framework.web.RequestDto;
+import com.github.pagehelper.PageInfo;
 
 /**
  * Title: QueryDemoRequestDto<br/>
@@ -21,7 +22,7 @@ import com.gigold.pay.framework.web.RequestDto;
 public class QueryDemoReqDto extends RequestDto{
     
     private Person person;
-    
+    private PageInfo pageInfo;
    
     
     

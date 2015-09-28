@@ -17,12 +17,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gigold.pay.demo.bo.Person;
+import com.gigold.pay.demo.service.Demo2Service;
 import com.gigold.pay.demo.service.DemoService;
+import com.gigold.pay.framework.base.SpringContextHolder;
 import com.gigold.pay.framework.base.log.impl.BizLogger;
 import com.gigold.pay.framework.core.SysCode;
 import com.gigold.pay.framework.core.exception.AbortException;
 import com.gigold.pay.framework.core.exception.PendingException;
 import com.gigold.pay.framework.web.ResponseDto;
+import com.github.pagehelper.PageInfo;
 
 /**
  * Title: DemoController<br/>
@@ -36,7 +39,8 @@ import com.gigold.pay.framework.web.ResponseDto;
 @RequestMapping("/")
 public class DemoController  {
 
-    /** demoService，由Autowired自动注入 */
+
+    
     @Autowired
     private DemoService demoService;
 
@@ -70,6 +74,21 @@ public class DemoController  {
         return res;
     }
     
+    
+    @RequestMapping(value = "/query2.do")
+    public @ResponseBody QueryDemoResDto query()  {
+        
+      
+        PageInfo<Person> pi=demoService.queryPage(1);
+        BizLogger.info("查到的参数"+pi.getSize());
+        
+        QueryDemoResDto res = new QueryDemoResDto();   
+        res.setPageInfo(pi);
+        res.setRspCd(SysCode.SUCCESS);
+      
+        return res;
+    }
+    
     @RequestMapping(value = "/insert.do")
     public @ResponseBody QueryDemoResDto insert(HttpSession session)  {
         
@@ -99,7 +118,7 @@ public class DemoController  {
     @RequestMapping(value = "/add.do")
     public @ResponseBody QueryDemoResDto add()  {
         BizLogger.info("调用add：");
-        Person p = new Person();
+        Person p = (Person) SpringContextHolder.getBean(Person.class);
         p.setName("事务失败");
         QueryDemoResDto res = new QueryDemoResDto();
         try {
@@ -116,7 +135,8 @@ public class DemoController  {
     @RequestMapping(value = "/add1.do")
     public @ResponseBody QueryDemoResDto add1()  {
         BizLogger.info("调用add1：");
-        Person p = new Person();
+        Person p = (Person) SpringContextHolder.getBean(Person.class);
+        BizLogger.info("p in 容器"+p.getName());
         p.setName("事务成功");
         QueryDemoResDto res = new QueryDemoResDto();
         try {
@@ -134,7 +154,7 @@ public class DemoController  {
     @RequestMapping(value = "/add2.do")
     public @ResponseBody QueryDemoResDto add2()  {
         BizLogger.info("调用add1：");
-        Person p = new Person();
+        Person p = (Person) SpringContextHolder.getBean(Person.class);
         p.setName("事务成功");
         QueryDemoResDto res = new QueryDemoResDto();
         try {

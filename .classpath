@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="main/|main/java/|main/resources/" kind="src" output="target/classes" path="src"/>
-	<classpathentry excluding="java/|resources/" kind="src" path="src/main"/>
+	<classpathentry excluding="main/|main/java/|main/resources/|main/resource/spring/|main/resources/spring/" kind="src" output="target/classes" path="src"/>
+	<classpathentry excluding="java/|resources/|resource/spring/|resources/spring/" kind="src" path="src/main"/>
 	<classpathentry kind="src" path="src/main/java"/>
-	<classpathentry kind="src" path="src/main/resources"/>
+	<classpathentry excluding="spring/" kind="src" path="src/main/resources"/>
+	<classpathentry kind="src" path="src/main/resources/spring">
+		<attributes>
+			<attribute name="ignore_optional_problems" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
 		<attributes>
 			<attribute name="maven.pomderived" value="true"/>

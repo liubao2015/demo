@@ -26,6 +26,13 @@
             WHERE ID =  #{userID} 
         ]]>
 	</select>
+	
+	<select id="search2"  resultMap="userResultMap">
+		<![CDATA[  
+            SELECT * 
+            FROM Test 
+        ]]>
+	</select>
 
 
 	<insert id="addPerson" parameterType="com.gigold.pay.demo.bo.Person"

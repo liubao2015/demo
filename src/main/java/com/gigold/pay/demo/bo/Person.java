@@ -7,6 +7,13 @@
  */
 package com.gigold.pay.demo.bo;
 
+import java.io.Serializable;
+
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+
+
 /**
  * Title: DemoBO<br/>
  * Description: <br/>
@@ -15,8 +22,9 @@ package com.gigold.pay.demo.bo;
  * @date 2015年9月16日下午2:09:25
  *
  */
-
-public class Person{
+@Component
+@Scope("prototype")
+public class Person implements Serializable{
     
     private String id;
     /**
@@ -28,6 +36,7 @@ public class Person{
     /**
      * @param id the id to set
      */
+ 
     public void setId(String id) {
         this.id = id;
     }
@@ -42,6 +51,7 @@ public class Person{
     /**
      * @param name the name to set
      */
+ 
     public void setName(String name) {
         this.name = name;
     }

@@ -7,6 +7,8 @@
  */
 package com.gigold.pay.demo.dao;
 
+import java.util.List;
+
 import com.gigold.pay.demo.bo.Person;
 
 /**
@@ -20,5 +22,6 @@ import com.gigold.pay.demo.bo.Person;
 
 public interface DemoDAO {
   public Person search(String name);
+  public List<Person> search2();
   public void addPerson(Person p);
 }
