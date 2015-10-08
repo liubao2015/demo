@@ -88,8 +88,5 @@
     	<error-code>500</error-code> 
 		<location>/WEB-INF/pages/500.html</location> 
 	</error-page>
-	<error-page> 
-    	<error-code>50*</error-code> 
-		<location>/WEB-INF/pages/500.html</location> 
-	</error-page>
+	
 </web-app>
