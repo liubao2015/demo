@@ -15,25 +15,12 @@
  */
 package com.gigold.pay.demo.controller;
 
-import com.gigold.pay.framework.core.Code;
 
-enum CodeItem implements Code{
+
+class CodeItem {
     
     //bia
-    DEMO_FAIL("D0000");
+    public static final String DEMO_FAIL="D0000";
    
     
-    private String value;
-    
-    
-    private CodeItem(String value){
-        this.value = value;
-        
-    }
-    
-    
-    @Override
-    public  String toString(){
-        return this.value;
-    }
 }

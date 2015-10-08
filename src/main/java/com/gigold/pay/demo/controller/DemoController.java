@@ -23,6 +23,7 @@ import com.gigold.pay.framework.base.SpringContextHolder;
 import com.gigold.pay.framework.base.log.impl.BizLogger;
 import com.gigold.pay.framework.core.SysCode;
 import com.gigold.pay.framework.core.exception.AbortException;
+import com.gigold.pay.framework.core.exception.AbortExceptionLogger;
 import com.gigold.pay.framework.core.exception.PendingException;
 import com.gigold.pay.framework.web.ResponseDto;
 import com.github.pagehelper.PageInfo;
@@ -43,6 +44,10 @@ public class DemoController  {
     
     @Autowired
     private DemoService demoService;
+    
+    
+    @Autowired
+    private Demo2Service demoService2;
 
     /**
      * Title: query<br/>
@@ -63,7 +68,7 @@ public class DemoController  {
         
         dto.validate();
         QueryDemoResDto res = new QueryDemoResDto();
-        Person p=demoService.query(dto.getPerson().getName());
+        Person p=demoService2.query(dto.getPerson().getName());
         BizLogger.info("传入的参数"+dto.getPerson().getName());
         if(p!= null){
             res.setPerson(p);
@@ -122,11 +127,11 @@ public class DemoController  {
         p.setName("事务失败");
         QueryDemoResDto res = new QueryDemoResDto();
         try {
-            demoService.addPerson(p);
+            demoService2.addPerson(p);
             res.setRspCd(SysCode.SUCCESS);
         } catch (AbortException e) {
-          
             res.setRspCd(SysCode.SYS_FAIL);
+            e.catchLog(this.getClass(), SysCode.SYS_FAIL);
         }        
         return res;
     }
@@ -140,12 +145,12 @@ public class DemoController  {
         p.setName("事务成功");
         QueryDemoResDto res = new QueryDemoResDto();
         try {
-            demoService.addPerson1(p);
+            demoService2.addPerson1(p);
             res.setRspCd(SysCode.SUCCESS);
         } catch (AbortException e) {
-            // TODO Auto-generated catch block
-          
+            // TODO Auto-generated catch block          
             res.setRspCd(SysCode.SYS_FAIL);
+            e.catchLog(this.getClass(), SysCode.SYS_FAIL);
         }        
         return res;
     }
@@ -158,10 +163,10 @@ public class DemoController  {
         p.setName("事务成功");
         QueryDemoResDto res = new QueryDemoResDto();
         try {
-            demoService.addPerson2(p);
+            demoService2.addPerson2(p);
             res.setRspCd(SysCode.SUCCESS);
         } catch (PendingException e) {
-          
+            e.catchLog(this.getClass(), SysCode.SYS_FAIL);
             res.setRspCd(SysCode.SYS_FAIL);
         }        
         return res;

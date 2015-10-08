@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry excluding="main/|main/java/|main/resources/|main/resource/spring/|main/resources/spring/" kind="src" output="target/classes" path="src"/>
+	<classpathentry excluding="main/|main/java/|main/resources/|main/resource/spring/|main/resources/spring/" including="**/*.java" kind="src" output="target/classes" path="src"/>
 	<classpathentry excluding="java/|resources/|resource/spring/|resources/spring/" kind="src" path="src/main"/>
-	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" output="target/classes" path="src/main/java">
+		<attributes>
+			<attribute name="optional" value="true"/>
+			<attribute name="maven.pomderived" value="true"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry excluding="spring/" kind="src" path="src/main/resources"/>
 	<classpathentry kind="src" path="src/main/resources/spring">
 		<attributes>
@@ -15,7 +20,6 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/pay-framework"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/pay-framework-base"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/pay-framework-bootstrap"/>
@@ -24,5 +28,10 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/pay-framework-jms"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/pay-framework-util"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/pay-framework-web"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

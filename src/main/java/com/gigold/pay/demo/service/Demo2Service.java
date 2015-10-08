@@ -28,19 +28,19 @@ import com.gigold.pay.framework.core.exception.PendingException;
 public class Demo2Service {
     
     
-//    @Autowired
-//    private DemoService service;
+    @Autowired
+    private DemoService service;
     
     @Autowired
     private DemoDAO dao;
     
     
-    //理论上只有一条成功
+    //理论上都失败
     @Transactional(rollbackFor = {AbortException.class })
     public void addPerson1(Person p) throws AbortException{
         dao.addPerson(p);
         p.setName(p.getName()+"我是第二条");
-//        service.addPerson1(p);
+        service.addPerson1(p);
     }
     
     //理论上应该也两条都回滚
@@ -48,14 +48,14 @@ public class Demo2Service {
     public void addPerson(Person p) throws AbortException{
         dao.addPerson(p); 
         p.setName(p.getName()+"我是第二条");
-//        service.addPerson(p);
+        service.addPerson(p);
     }
     
     //理论上应该也两条都成功
     public void addPerson2(Person p) throws PendingException{
         dao.addPerson(p);
         p.setName(p.getName()+"我是第二条");
-//        service.addPerson2(p);
+        service.addPerson2(p);
        
     }
     

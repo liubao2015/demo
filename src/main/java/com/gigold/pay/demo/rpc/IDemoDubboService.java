@@ -9,6 +9,7 @@ package com.gigold.pay.demo.rpc;
 
 import java.util.List;
 
+import com.gigold.pay.framework.core.exception.AbortException;
 import com.gigold.pay.framework.core.exception.PendingException;
 
 /**
@@ -22,6 +23,6 @@ import com.gigold.pay.framework.core.exception.PendingException;
 public interface IDemoDubboService {
     
     public String sayHello(String name) ;
-    public List getUsers();
+    public List getUsers() throws AbortException;
     public String sayHello2(String name) throws PendingException;
 }
