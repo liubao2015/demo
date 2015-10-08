@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.gigold.pay.demo.bo.Person;
 import com.gigold.pay.demo.service.Demo2Service;
 import com.gigold.pay.demo.service.DemoService;
+import com.gigold.pay.framework.base.DomainFactory;
 import com.gigold.pay.framework.base.SpringContextHolder;
 import com.gigold.pay.framework.base.log.impl.BizLogger;
 import com.gigold.pay.framework.core.SysCode;
@@ -123,7 +124,7 @@ public class DemoController  {
     @RequestMapping(value = "/add.do")
     public @ResponseBody QueryDemoResDto add()  {
         BizLogger.info("调用add：");
-        Person p = (Person) SpringContextHolder.getBean(Person.class);
+        Person p = DomainFactory.getInstance().getDomain(Person.class);
         p.setName("事务失败");
         QueryDemoResDto res = new QueryDemoResDto();
         try {
@@ -140,7 +141,7 @@ public class DemoController  {
     @RequestMapping(value = "/add1.do")
     public @ResponseBody QueryDemoResDto add1()  {
         BizLogger.info("调用add1：");
-        Person p = (Person) SpringContextHolder.getBean(Person.class);
+        Person p = DomainFactory.getInstance().getDomain(Person.class);
         BizLogger.info("p in 容器"+p.getName());
         p.setName("事务成功");
         QueryDemoResDto res = new QueryDemoResDto();
