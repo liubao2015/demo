@@ -24,15 +24,26 @@
             SELECT * 
             FROM Test 
             WHERE ID =  #{userID} 
-            for update
+           
         ]]>
 	</select>
 	
-	<select id="search2"  resultMap="userResultMap">
+	
+	<select id="searchALL"   resultMap="userResultMap">
 		<![CDATA[  
             SELECT * 
             FROM Test 
             
+        ]]>
+	</select>
+	
+	<!-- for update 不支持分页组件 -->
+	<select id="searchForupdate"  parameterType="String" resultMap="userResultMap">
+		<![CDATA[  
+            SELECT * 
+            FROM Test 
+            WHERE ID =  #{userID}  
+            for update
         ]]>
 	</select>
 
@@ -41,9 +52,9 @@
 		useGeneratedKeys="true" keyProperty="id">
 		<![CDATA[  
             insert into Test		
-		 		(NAME) 
+		 		(NAME,MARK) 
 			values 
-		 		(#{name})
+		 		(#{name},#{desc})
         ]]>
 	</insert>
 

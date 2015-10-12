@@ -18,6 +18,7 @@ import com.gigold.pay.demo.bo.Person;
 import com.gigold.pay.demo.dao.DemoDAO;
 import com.gigold.pay.demo.rpc.IDemoDubboService;
 import com.gigold.pay.framework.base.SpringContextHolder;
+import com.gigold.pay.framework.core.Domain;
 import com.gigold.pay.framework.core.exception.AbortException;
 import com.gigold.pay.framework.core.exception.PendingException;
 
@@ -31,7 +32,7 @@ import com.gigold.pay.framework.core.exception.PendingException;
  */
 
 @Service
-public class DemoDubboService implements  IDemoDubboService{
+public class DemoDubboService extends Domain implements  IDemoDubboService{
     
     
     
@@ -45,9 +46,10 @@ public class DemoDubboService implements  IDemoDubboService{
         Person u1 =  (Person) SpringContextHolder.getBean(Person.class);
         u1.setName(name);
         u1.setAge(20);
+        
         dao.addPerson(u1);
 
-       
+        
         
 
         

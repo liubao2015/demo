@@ -4,6 +4,8 @@
 	<comment></comment>
 	<projects>
 		<project>dubboClientDemo</project>
+		<project>pay-framework-cache</project>
+		<project>pay-framework-rpc</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

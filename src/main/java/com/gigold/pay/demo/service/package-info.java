@@ -19,7 +19,7 @@ package com.gigold.pay.demo.service;
 
 class CodeItem{
     
-    //bia
+    //错误码
     public  final static  String _FAIL="D0000";
    
     

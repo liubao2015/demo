@@ -49,14 +49,26 @@ public class DemoService {
     
     public PageInfo<Person> queryPage(int pageNum) {
         PageHelper.startPage(pageNum, 10, true);
-        List<Person> list= dao.search2();
+        List<Person> list= dao.searchALL();
         PageInfo<Person> pi = new PageInfo(list);
         return pi;
     }
     
     
+    public Person queryForUpdate(String name) {
+        return dao.searchForupdate(name);
+    }
+    
+    
     @Transactional(rollbackFor = {AbortException.class })
     public void addPerson(Person p) throws AbortException{
+        dao.addPerson(p);
+   }
+    
+    
+    
+    @Transactional(rollbackFor = {AbortException.class })
+    public void addPersonFail(Person p) throws AbortException{
         dao.addPerson(p);
         throw new AbortException(CodeItem._FAIL,"failed");
        
@@ -66,13 +78,14 @@ public class DemoService {
    
     public void addPerson1(Person p) throws AbortException{
         dao.addPerson(p);
-        throw new AbortException(CodeItem._FAIL,"failed");
+        throw new AbortException(CodeItem._FAIL,"failed，but the data inserted");
        
     }
     
+    @Transactional(rollbackFor = {AbortException.class })
     public void addPerson2(Person p) throws PendingException{
         dao.addPerson(p);
-        throw new PendingException(CodeItem._FAIL,"failed");
+        throw new PendingException(CodeItem._FAIL,"failed，but the data inserted");
        
     }
 

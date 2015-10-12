@@ -68,10 +68,9 @@ public class DemoController extends BaseController {
     public @ResponseBody QueryDemoResDto query(@RequestBody QueryDemoReqDto dto)  {
         
         debug("调用query：");
-        
         dto.validate();
         QueryDemoResDto res = new QueryDemoResDto();
-        Person p=demoService2.query(dto.getPerson().getName());
+        Person p=demoService.query(dto.getPerson().getName());
         debug("传入的参数"+dto.getPerson().getName());
         if(p!= null){
             res.setPerson(p);
@@ -86,11 +85,8 @@ public class DemoController extends BaseController {
     public @ResponseBody QueryDemoResDto query2()  {
         
         debug("调用query：");
-        
-        
-       
         QueryDemoResDto res = new QueryDemoResDto();
-        Person p=demoService2.query("4");
+        Person p=demoService.query("4");
         debug("传入的参数4");
         if(p!= null){
             res.setPerson(p);
@@ -116,14 +112,26 @@ public class DemoController extends BaseController {
 //        return res;
 //    }
     
+    
+    //事务成功，业务成功
     @RequestMapping(value = "/insert.do")
     public @ResponseBody QueryDemoResDto insert(HttpSession session)  {
         
         debug("调用insert：");
         session.setAttribute("test", "陈志铉");
         session.setAttribute("test1", "czx");
+        Person p = DomainFactory.getInstance().getDomain(Person.class);
+        p.setDesc("事务成功");
         QueryDemoResDto res = new QueryDemoResDto();
-        res.setRspCd(SysCode.SUCCESS);       
+        try {
+            demoService.addPerson(p);
+            res.setRspCd(SysCode.SUCCESS);
+        } catch (AbortException e) {
+            res.setRspCd(SysCode.SYS_FAIL);
+            
+            e.catchLog(this.getClass(), SysCode.SYS_FAIL);
+        }    
+       
         return res;
     }
     
@@ -141,15 +149,15 @@ public class DemoController extends BaseController {
         return res;
     }
 
-    
+  //演示业务显示失败，业务成为失败，因为调用的服务没有配置响应的事务
     @RequestMapping(value = "/add.do")
     public @ResponseBody QueryDemoResDto add()  {
         debug("调用add：");
         Person p = DomainFactory.getInstance().getDomain(Person.class);
-        p.setName("事务失败");
+        p.setDesc("事务失败");
         QueryDemoResDto res = new QueryDemoResDto();
         try {
-            demoService2.addPerson(p);
+            demoService.addPersonFail(p);
             res.setRspCd(SysCode.SUCCESS);
         } catch (AbortException e) {
             res.setRspCd(SysCode.SYS_FAIL);
@@ -159,15 +167,17 @@ public class DemoController extends BaseController {
     }
     
     
+    
+    //演示业务显示失败，但实际业务成功，因为调用的服务没有配置响应的事务
     @RequestMapping(value = "/add1.do")
     public @ResponseBody QueryDemoResDto add1()  {
         debug("调用add1：");
         Person p = DomainFactory.getInstance().getDomain(Person.class);
         debug("p in 容器"+p.getName());
-        p.setName("事务成功");
+        p.setDesc("事务成功");
         QueryDemoResDto res = new QueryDemoResDto();
         try {
-            demoService2.addPerson1(p);
+            demoService.addPerson1(p);
             res.setRspCd(SysCode.SUCCESS);
         } catch (AbortException e) {
             // TODO Auto-generated catch block          
@@ -178,16 +188,36 @@ public class DemoController extends BaseController {
     }
     
     
+  //演示业务显示失败，但实际业务成功，因为调用的服务随配置了事务，但并没有触发，因为异常为其他异常
     @RequestMapping(value = "/add2.do")
     public @ResponseBody QueryDemoResDto add2()  {
         debug("调用add1：");
         Person p = (Person) SpringContextHolder.getBean(Person.class);
-        p.setName("事务成功");
+        p.setDesc("事务成功");
         QueryDemoResDto res = new QueryDemoResDto();
         try {
-            demoService2.addPerson2(p);
+            demoService.addPerson2(p);
             res.setRspCd(SysCode.SUCCESS);
         } catch (PendingException e) {
+            e.catchLog(this.getClass(), SysCode.SYS_FAIL);
+            res.setRspCd(SysCode.SYS_FAIL);
+        }        
+        return res;
+    }
+    
+    
+  //演示业务触发数据库事务，违反唯一约束，导致自己回滚
+    @RequestMapping(value = "/only.do")
+    public @ResponseBody QueryDemoResDto only()  {
+        debug("调用add1：");
+        Person p = (Person) SpringContextHolder.getBean(Person.class);
+        p.setName("我不能重复");
+        p.setDesc("事务成功");
+        QueryDemoResDto res = new QueryDemoResDto();
+        try {
+            demoService.addPerson(p);
+            res.setRspCd(SysCode.SUCCESS);
+        } catch (AbortException e) {
             e.catchLog(this.getClass(), SysCode.SYS_FAIL);
             res.setRspCd(SysCode.SYS_FAIL);
         }        

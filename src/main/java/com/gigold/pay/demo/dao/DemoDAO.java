@@ -22,6 +22,7 @@ import com.gigold.pay.demo.bo.Person;
 
 public interface DemoDAO {
   public Person search(String name);
-  public List<Person> search2();
+  public Person searchForupdate(String name);
+  public List<Person> searchALL();
   public void addPerson(Person p);
 }

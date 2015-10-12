@@ -12,6 +12,8 @@ import java.io.Serializable;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import com.gigold.pay.framework.core.Domain;
+
 
 
 /**
@@ -24,7 +26,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @Scope("prototype")
-public class Person implements Serializable{
+public class Person extends Domain implements Serializable{
     
     private String id;
     /**
@@ -42,6 +44,19 @@ public class Person implements Serializable{
     }
     private String name;
     private int age;
+    private String desc;
+    /**
+     * @return the desc
+     */
+    public String getDesc() {
+        return desc;
+    }
+    /**
+     * @param desc the desc to set
+     */
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
     /**
      * @return the name
      */
