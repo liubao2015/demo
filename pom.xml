@@ -75,45 +75,10 @@
     		<!-- modules begin -->
   			<dependency>
 				<groupId>com.gigold.pay</groupId>
-				<artifactId>pay-framework-bootstrap</artifactId>
-				<version>${framework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.gigold.pay</groupId>
-				<artifactId>pay-framework-util</artifactId>
-				<version>${framework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.gigold.pay</groupId>
-				<artifactId>pay-framework-core</artifactId>
-				<version>${framework.version}</version>
+  				<artifactId>pay-framework-version</artifactId>
+  				<version>0.1.0-SNAPSHOT</version>
 			</dependency>
 			
-			<dependency>
-				<groupId>com.gigold.pay</groupId>
-				<artifactId>pay-framework-web</artifactId>
-				<version>${framework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.gigold.pay</groupId>
-				<artifactId>pay-framework-cache</artifactId>
-				<version>${framework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.gigold.pay</groupId>
-				<artifactId>pay-framework-jms</artifactId>
-				<version>${framework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.gigold.pay</groupId>
-				<artifactId>pay-framework-base</artifactId>
-				<version>${framework.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>com.gigold.pay</groupId>
-				<artifactId>pay-framework-rpc</artifactId>
-				<version>${framework.version}</version>
-			</dependency>
 			<!-- modules end -->
     		
     		
