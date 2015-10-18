@@ -21,49 +21,72 @@ import com.gigold.pay.framework.core.exception.PendingException;
  * Title: Demo2Service<br/>
  * Description: <br/>
  * Company: gigold<br/>
- * @author Devin
- * @date 2015年9月28日上午11:55:23
  *
+ * @author Devin
+ * @date 2015年9月28日上午11 :55:23
  */
 @Service
-public class Demo2Service extends Domain{
-    
-    
+public class Demo2Service extends Domain {
+
     @Autowired
     private DemoService service;
-    
+
     @Autowired
     private DemoDAO dao;
-    
-    
-    //理论上都失败
-    @Transactional(rollbackFor = {AbortException.class })
-    public void addPerson1(Person p) throws AbortException{
-        dao.addPerson(p);
-        debug("调用addPerson1");
-        p.setName(p.getName()+"我是第二条");
-        service.addPerson1(p);
-    }
-    
+
+    /**
+     * Add person string.
+     *
+     * @param p the p
+     * @return the string
+     * @throws AbortException the abort exception
+     */
     //理论上应该也两条都回滚
-    @Transactional(rollbackFor = {AbortException.class })
-    public void addPerson(Person p) throws AbortException{
-        dao.addPerson(p); 
-        debug("调用addPerson");
-        p.setName(p.getName()+"我是第二条");
-        service.addPerson(p);
-    }
-    
-    //理论上应该也两条都成功
-    public void addPerson2(Person p) throws PendingException{
+    @Transactional(rollbackFor = { AbortException.class })
+    public String addPerson(Person p) throws AbortException {
         dao.addPerson(p);
-        p.setName(p.getName()+"我是第二条");
-        service.addPerson2(p);
-       
+        debug("调用addPerson");
+        p.setName(p.getName() + "我是第二条");
+        return service.addPerson(p);
     }
-    
-    
+
+    /**
+     * Modify person boolean.
+     *
+     * @param p the p
+     * @return the boolean
+     * @throws AbortException the abort exception
+     */
+    public boolean modifyPerson(Person p) throws AbortException {
+        debug("调用modifyPerson");
+        return service.modifyPerson(p);
+    }
+
+    /**
+     * Query person.
+     *
+     * @param name the name
+     * @return the person
+     */
     public Person query(String name) {
-        return dao.search(name);
+        return service.query(name);
+    }
+
+    /**
+     * Sets dao.
+     *
+     * @param dao the dao
+     */
+    public void setDao(DemoDAO dao) {
+        this.dao = dao;
+    }
+
+    /**
+     * Sets service.
+     *
+     * @param service the service
+     */
+    public void setService(DemoService service) {
+        this.service = service;
     }
 }

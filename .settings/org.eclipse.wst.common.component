@@ -1,31 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-	<wb-module deploy-name="demo">
+    <wb-module deploy-name="demo">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <dependent-module archiveName="pay-framework-bootstrap-0.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/pay-framework-bootstrap/pay-framework-bootstrap">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="mybatis-spring-6.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/springMybatis/springMybatis">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="pay-framework-util-0.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/pay-framework-util/pay-framework-util">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="pay-framework-core-0.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/pay-framework-core/pay-framework-core">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="pay-framework-web-0.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/pay-framework-web/pay-framework-web">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="pay-framework-cache-0.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/pay-framework-cache/pay-framework-cache">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="pay-framework-base-0.1.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/pay-framework-base/pay-framework-base">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-		<property name="context-root" value="demo"/>
-		<property name="java-output-path" value="/demo/build/classes"/>
-	</wb-module>
+        <property name="context-root" value="demo"/>
+        <property name="java-output-path" value="/demo/target/classes"/>
+    </wb-module>
 </project-modules>

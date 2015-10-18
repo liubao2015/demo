@@ -36,22 +36,15 @@ import com.github.pagehelper.PageInfo;
  * Description: <br/>
  * Company: gigold<br/>
  * @author Devin
- * @date 2015年9月16日下午6:13:29
- *
+ * @date 2015年9月16日下午6 :13:29
  */
 @Controller
 @RequestMapping("/")
 public class DemoController extends BaseController {
 
-
-    
     @Autowired
     private DemoService demoService;
     
-    
-    @Autowired
-    private Demo2Service demoService2;
-
     /**
      * Title: query<br/>
      * Description: <br/>
@@ -59,8 +52,6 @@ public class DemoController extends BaseController {
      * @author ousei
      * @date 2014年12月15日下午9:05:03
      *
-     * @param acNo
-     *            账号
      * @return ${返回信息描述}
      * @throws Exception
      */
@@ -177,7 +168,7 @@ public class DemoController extends BaseController {
         p.setDesc("事务成功");
         QueryDemoResDto res = new QueryDemoResDto();
         try {
-            demoService.addPerson1(p);
+            demoService.addPerson(p);
             res.setRspCd(SysCode.SUCCESS);
         } catch (AbortException e) {
             // TODO Auto-generated catch block          
@@ -196,9 +187,9 @@ public class DemoController extends BaseController {
         p.setDesc("事务成功");
         QueryDemoResDto res = new QueryDemoResDto();
         try {
-            demoService.addPerson2(p);
+            demoService.addPerson(p);
             res.setRspCd(SysCode.SUCCESS);
-        } catch (PendingException e) {
+        } catch (AbortException e) {
             e.catchLog(this.getClass(), SysCode.SYS_FAIL);
             res.setRspCd(SysCode.SYS_FAIL);
         }        
@@ -222,6 +213,16 @@ public class DemoController extends BaseController {
             res.setRspCd(SysCode.SYS_FAIL);
         }        
         return res;
+    }
+
+
+    /**
+     * Sets demo service.
+     *
+     * @param demoService the demo service
+     */
+    public void setDemoService(DemoService demoService) {
+        this.demoService = demoService;
     }
 }
 
