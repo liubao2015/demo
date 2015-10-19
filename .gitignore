@@ -3,6 +3,15 @@
 .project
 *.prefs
 .classpath
+.setting/
+
+#忽略eclipse相关
+org.eclipse.core.resources.prefs
+org.eclipse.jdt.core.prefs
+org.eclipse.m2e.core.prefs
+org.eclipse.wst.common.component
+org.eclipse.wst.common.project.facet.core.xml
+
 
  
 #忽略java相关的文件  
