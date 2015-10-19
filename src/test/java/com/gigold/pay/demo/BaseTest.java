@@ -47,7 +47,7 @@ public class BaseTest {
 
         SystemPropertyConfigure cnf = new SystemPropertyConfigure();
 
-        cnf.setProperty("sys.home", "/app/ver/");
+        cnf.setProperty("sys.home", "/app/ss/");
         cnf.setProperty("sys.runmode", "develop");
         cnf.setProperty("sys.encoding", "UTF-8");
         cnf.setProperty("instance.id", "SYS");

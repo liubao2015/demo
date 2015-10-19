@@ -4,6 +4,8 @@
  */
 package com.gigold.pay.demo.mockito;
 
+import com.gigold.pay.demo.TransactionTemplateStuk;
+import com.gigold.pay.framework.base.transaction.GigoldTransactionTemplate;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,7 +18,10 @@ import com.gigold.pay.demo.service.DemoService;
 import com.gigold.pay.framework.core.exception.AbortException;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.stubbing.OngoingStubbing;
 import org.powermock.modules.junit4.PowerMockRunner;
+import org.springframework.transaction.support.TransactionCallback;
+import org.springframework.transaction.support.TransactionTemplate;
 
 import static org.mockito.Mockito.*;
 
@@ -32,19 +37,27 @@ public class Demo2ServiceMockitoTest extends BaseTest {
     /**
      * ====================== mock上下文创建 ==========================
      */
-//    @Rule
-//    public MockitoRule mockery = MockitoJUnit.rule();
+    //    @Rule
+    //    public MockitoRule mockery = MockitoJUnit.rule();
 
-//    @Rule
-//    public PowerMockRule rule = new PowerMockRule();
+    //    @Rule
+    //    public PowerMockRule rule = new PowerMockRule();
 
-    /**====================== mock对象定义 ========================== **/
+    /**
+     * ====================== mock对象定义 ==========================
+     **/
     @Mock
-    private DemoDAO      demoDAO;
+    private DemoDAO                   demoDAO;
+
     @Mock
-    private DemoService  demoService;
-    /**====================== 测试对象定义 ==========================**/
-    private Demo2Service demo2Service = new Demo2Service();
+    private DemoService               demoService;
+
+    private GigoldTransactionTemplate transactionTemplate = new TransactionTemplateStuk();
+
+    /**
+     * ====================== 测试对象定义 ==========================
+     **/
+    private Demo2Service              demo2Service        = new Demo2Service();
 
     /**
      * mock对象初始化
@@ -56,6 +69,7 @@ public class Demo2ServiceMockitoTest extends BaseTest {
         // 测试对象中被mock对象赋值
         demo2Service.setDao(demoDAO);
         demo2Service.setService(demoService);
+        demo2Service.setTransactionTemplate(transactionTemplate);
     }
 
     /**
@@ -67,22 +81,24 @@ public class Demo2ServiceMockitoTest extends BaseTest {
     public void testAddPerson() throws AbortException {
 
         // 模拟设置期望
+
         when(demoDAO.addPerson(any(Person.class))).thenReturn("1");
         when(demoService.addPerson(any(Person.class))).thenReturn("1")
-            .thenThrow(new AbortException(CodeItem._FAIL, "failed"));
+            .thenThrow(new AbortException(CodeItem._FAIL, "failed"))
+            .thenThrow(new RuntimeException("my failed"));
         // 测试正常新增
-        String id = demo2Service.addPerson(new Person());
-        Assert.assertEquals("1", id);
+        String id1 = demo2Service.addPerson(new Person());
+        Assert.assertEquals("1", id1);
         // 测试抛出AbortException
-        try {
-            demo2Service.addPerson(new Person());
-        } catch (AbortException e) {
-            Assert.assertEquals(CodeItem._FAIL, e.getCode());
-        }
+        String id2 = demo2Service.addPerson(new Person());
+        Assert.assertNull(id2);
+        // 测试抛出未知RuntimeException
+        String id3 = demo2Service.addPerson(new Person());
+        Assert.assertNull(id3);
 
         // 确认执行顺序、次数与传入参数
-        verify(demoDAO, times(2)).addPerson(any(Person.class));
-        verify(demoService, atLeast(2)).addPerson(any(Person.class));
+        verify(demoDAO, times(3)).addPerson(any(Person.class));
+        verify(demoService, atLeast(3)).addPerson(any(Person.class));
     }
 
     /**
