@@ -62,7 +62,7 @@
 		</init-param>
 		<init-param>
 			<param-name>cookieAge</param-name>
-			<param-value>2592000</param-value>
+			<param-value>-1</param-value>
 		</init-param>
 	</filter>
 	<filter-mapping>
