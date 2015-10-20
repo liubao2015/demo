@@ -27,6 +27,7 @@ import com.gigold.pay.framework.core.exception.AbortException;
 import com.gigold.pay.framework.core.exception.AbortExceptionLogger;
 import com.gigold.pay.framework.core.exception.PendingException;
 import com.gigold.pay.framework.web.BaseController;
+import com.gigold.pay.framework.web.ReqHeader;
 import com.gigold.pay.framework.web.ResponseDto;
 import com.github.pagehelper.PageInfo;
 
@@ -77,6 +78,11 @@ public class DemoController extends BaseController {
         
         debug("调用query：");
         QueryDemoResDto res = new QueryDemoResDto();
+        
+        
+        ReqHeader header =getHeader();
+        debug("请求的Session ID＝"+header.getTokenId());
+        
         Person p=demoService.query("4");
         debug("传入的参数4");
         if(p!= null){

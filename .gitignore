@@ -3,7 +3,10 @@
 .project
 *.prefs
 .classpath
-.setting/
+
+.settings/
+
+
 .idea/
 *.iml
 
