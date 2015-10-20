@@ -4,6 +4,19 @@
  */
 package com.gigold.pay.demo.mockito;
 
+import static org.mockito.Mockito.*;
+
+import javax.servlet.http.HttpSession;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.powermock.api.mockito.PowerMockito;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
+
 import com.gigold.pay.demo.BaseTest;
 import com.gigold.pay.demo.bo.Person;
 import com.gigold.pay.demo.controller.DemoController;
@@ -14,16 +27,6 @@ import com.gigold.pay.demo.service.DemoService;
 import com.gigold.pay.framework.base.SpringContextHolder;
 import com.gigold.pay.framework.core.SysCode;
 import com.gigold.pay.framework.core.exception.AbortException;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.powermock.api.mockito.PowerMockito;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
-import javax.servlet.http.HttpSession;
-import static org.mockito.Mockito.*;
 
 /**
  * The type Demo controller mockito test.
@@ -127,6 +130,7 @@ public class DemoControllerMockitoTest extends BaseTest {
      * @throws AbortException the abort exception
      */
     @Test
+    // 需要MOCK静态方法是必须加上次注解
     @PrepareForTest(SpringContextHolder.class)
     public void testInsert() throws AbortException {
         // 数据初始化
@@ -137,9 +141,6 @@ public class DemoControllerMockitoTest extends BaseTest {
         p.setDesc("测试");
 
         // 模拟设置期望
-        session.setAttribute("test", "陈志铉");
-        session.setAttribute("test1", "czx");
-
         PowerMockito.mockStatic(SpringContextHolder.class);
         when(SpringContextHolder.getBean(Person.class)).thenReturn(p);
 
@@ -177,6 +178,7 @@ public class DemoControllerMockitoTest extends BaseTest {
      * @throws AbortException the abort exception
      */
     @Test
+    // 需要MOCK静态方法是必须加上次注解
     @PrepareForTest(SpringContextHolder.class)
     public void testAdd() throws AbortException {
         // 数据初始化
@@ -203,6 +205,7 @@ public class DemoControllerMockitoTest extends BaseTest {
 
         // 确认执行顺序、次数与传入参数
         verify(demoService, times(2)).addPersonFail(any(Person.class));
+        // 静态方法调用验证
         PowerMockito.verifyStatic();
     }
 
@@ -212,6 +215,7 @@ public class DemoControllerMockitoTest extends BaseTest {
      * @throws AbortException the abort exception
      */
     @Test
+    // 需要MOCK静态方法是必须加上次注解
     @PrepareForTest(SpringContextHolder.class)
     public void testAdd1() throws AbortException {
         // 数据初始化
@@ -238,6 +242,7 @@ public class DemoControllerMockitoTest extends BaseTest {
 
         // 确认执行顺序、次数与传入参数
         verify(demoService, times(2)).addPerson(any(Person.class));
+        // 静态方法调用验证
         PowerMockito.verifyStatic();
     }
 
@@ -247,6 +252,7 @@ public class DemoControllerMockitoTest extends BaseTest {
      * @throws AbortException the abort exception
      */
     @Test
+    // 需要MOCK静态方法是必须加上次注解
     @PrepareForTest(SpringContextHolder.class)
     public void testAdd2() throws AbortException {
         // 数据初始化
@@ -273,6 +279,7 @@ public class DemoControllerMockitoTest extends BaseTest {
 
         // 确认执行顺序、次数与传入参数
         verify(demoService, times(2)).addPerson(any(Person.class));
+        // 静态方法调用验证
         PowerMockito.verifyStatic();
     }
 
@@ -282,6 +289,7 @@ public class DemoControllerMockitoTest extends BaseTest {
      * @throws AbortException the abort exception
      */
     @Test
+    // 需要MOCK静态方法是必须加上次注解
     @PrepareForTest(SpringContextHolder.class)
     public void testOnly() throws AbortException {
         // 数据初始化
@@ -308,6 +316,7 @@ public class DemoControllerMockitoTest extends BaseTest {
 
         // 确认执行顺序、次数与传入参数
         verify(demoService, times(2)).addPerson(any(Person.class));
+        // 静态方法调用验证
         PowerMockito.verifyStatic();
     }
 }
