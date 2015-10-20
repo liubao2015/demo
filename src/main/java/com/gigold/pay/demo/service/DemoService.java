@@ -30,63 +30,42 @@ import com.github.pagehelper.PageInfo;
  */
 @Service
 public class DemoService {
-    
-    
+
     @Autowired
     private DemoDAO dao;
-    /* （non Javadoc）
-     * Title: query<br/>
-     * <p>Description: <br/>
-     * @param name
-     * @return
-     * @throws AbortException
-     * @see com.gigold.pay.demo.service.DemoService#query(java.lang.String)
-     */
-  
+
     public Person query(String name) {
         return dao.search(name);
     }
-    
+
     public PageInfo<Person> queryPage(int pageNum) {
         PageHelper.startPage(pageNum, 10, true);
-        List<Person> list= dao.searchALL();
+        List<Person> list = dao.searchALL();
         PageInfo<Person> pi = new PageInfo(list);
         return pi;
     }
-    
-    
+
     public Person queryForUpdate(String name) {
         return dao.searchForupdate(name);
     }
-    
-    
-    @Transactional(rollbackFor = {AbortException.class })
-    public void addPerson(Person p) throws AbortException{
-        dao.addPerson(p);
-   }
-    
-    
-    
-    @Transactional(rollbackFor = {AbortException.class })
-    public void addPersonFail(Person p) throws AbortException{
-        dao.addPerson(p);
-        throw new AbortException(CodeItem._FAIL,"failed");
-       
+
+    @Transactional(rollbackFor = { AbortException.class })
+    public String addPerson(Person p) throws AbortException {
+//        throw new AbortException(CodeItem._FAIL, "failed，but the data inserted");
+//        throw new PendingException(CodeItem._FAIL,"failed，but the data inserted");
+        return dao.addPerson(p);
+
     }
-    
-    
-   
-    public void addPerson1(Person p) throws AbortException{
-        dao.addPerson(p);
-        throw new AbortException(CodeItem._FAIL,"failed，but the data inserted");
-       
+
+    @Transactional(rollbackFor = { AbortException.class })
+    public String addPersonFail(Person p) throws AbortException {
+        return dao.addPerson(p);
+        //        throw new AbortException(CodeItem._FAIL,"failed");
     }
-    
-    @Transactional(rollbackFor = {AbortException.class })
-    public void addPerson2(Person p) throws PendingException{
-        dao.addPerson(p);
-        throw new PendingException(CodeItem._FAIL,"failed，but the data inserted");
-       
+
+    public boolean modifyPerson(Person p) throws AbortException {
+        return dao.modifyPerson(p);
     }
+
 
 }

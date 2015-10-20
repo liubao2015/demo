@@ -3,7 +3,12 @@
 .project
 *.prefs
 .classpath
+
 .settings/
+
+
+.idea/
+*.iml
 
 #忽略eclipse相关
 org.eclipse.core.resources.prefs

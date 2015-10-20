@@ -48,12 +48,6 @@ public class DemoDubboService extends Domain implements  IDemoDubboService{
         u1.setAge(20);
         
         dao.addPerson(u1);
-
-        
-        
-
-        
-        
         return "SUCCESS";
     }
 
@@ -69,10 +63,6 @@ public class DemoDubboService extends Domain implements  IDemoDubboService{
         dao.addPerson(u1);
         throw new AbortException(CodeItem._FAIL,"");
        
-        
-
-        
-        
     }
     
     public String sayHello2(String name) throws PendingException{
