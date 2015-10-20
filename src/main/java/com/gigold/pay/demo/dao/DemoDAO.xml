@@ -27,18 +27,18 @@
            
         ]]>
 	</select>
-	
-	
-	<select id="searchALL"   resultMap="userResultMap">
+
+
+	<select id="searchALL" resultMap="userResultMap">
 		<![CDATA[  
             SELECT * 
             FROM Test 
             
         ]]>
 	</select>
-	
+
 	<!-- for update 不支持分页组件 -->
-	<select id="searchForupdate"  parameterType="String" resultMap="userResultMap">
+	<select id="searchForupdate" parameterType="String" resultMap="userResultMap">
 		<![CDATA[  
             SELECT * 
             FROM Test 

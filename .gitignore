@@ -3,7 +3,7 @@
 .project
 *.prefs
 .classpath
-.setting/
+.settings/
 
 #忽略eclipse相关
 org.eclipse.core.resources.prefs
