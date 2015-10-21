@@ -1,13 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
-    <groupId>com.gigold.pay</groupId>
-    <artifactId>demo</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
-    <packaging>war</packaging>
-    <name>demo</name>
-    <description>示例项目</description>
-    <build>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.gigold.pay</groupId>
+  <artifactId>demo</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <name>demo</name>
+  <description>演示整体框架使用情况	</description>
+  
+  <build>
         <resources>
             <resource>
                 <directory>src/main/java</directory>
@@ -87,17 +88,10 @@
 
 
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>jsp-api</artifactId>
-            <version>2.1</version>
-            <scope>provided</scope>
-        </dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -115,12 +109,7 @@
             <version>2.6.0</version>
             <scope>test</scope>
         </dependency>
-        <!--<dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>2.0.31-beta</version>
-            <scope>test</scope>
-        </dependency>-->
+        
         <dependency>
             <groupId>org.powermock</groupId>
             <artifactId>powermock-module-junit4</artifactId>
@@ -150,8 +139,13 @@
             <id>snapshots</id>
             <name>Gigold Nexus Repository</name>
             <url>http://123.57.152.75:8081/nexus/content/repositories/snapshots</url>
-        </snapshotRepository>
-    </distributionManagement>
+       </snapshotRepository>
+	 </distributionManagement>
 
-
+  
+  <modules>
+    <module>demo-web</module>
+    <module>demo-logic</module>
+    <module>demo-domain</module>
+  </modules>
 </project>
