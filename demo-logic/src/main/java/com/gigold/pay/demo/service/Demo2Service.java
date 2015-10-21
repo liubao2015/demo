@@ -44,7 +44,6 @@ public class Demo2Service extends Domain {
      * @return the string
      * @throws AbortException the abort exception
      */
-//理论上应该也两条都回滚
     public String addPerson(final Person p) {
        
 
@@ -59,15 +58,18 @@ public class Demo2Service extends Domain {
                     return service.addPerson(p);
                 } catch (AbortException ae) {
                     warn("新增出错", ae);
+                    // 事务回滚
                     status.setRollbackOnly();
                     return null;
                 } catch (Exception e) {
                     warn("新增出错", e);
+                    // 事务回滚
                     status.setRollbackOnly();
                     return null;
                 }
             }
         });
+
         return personId;
     }
 

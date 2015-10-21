@@ -49,7 +49,6 @@ public class DemoService {
         return dao.searchForupdate(name);
     }
 
-    @Transactional(rollbackFor = { AbortException.class })
     public String addPerson(Person p) throws AbortException {
 //        throw new AbortException(CodeItem._FAIL, "failed，but the data inserted");
 //        throw new PendingException(CodeItem._FAIL,"failed，but the data inserted");
@@ -57,7 +56,6 @@ public class DemoService {
 
     }
 
-    @Transactional(rollbackFor = { AbortException.class })
     public String addPersonFail(Person p) throws AbortException {
         return dao.addPerson(p);
         //        throw new AbortException(CodeItem._FAIL,"failed");

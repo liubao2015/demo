@@ -92,22 +92,7 @@ public class DemoController extends BaseController {
         return res;
     }
     
-    
-//    @RequestMapping(value = "/query2.do")
-//    public @ResponseBody QueryDemoResDto query()  {
-//        
-//      
-//        PageInfo<Person> pi=demoService.queryPage(1);
-//        BizLogger.info("查到的参数"+pi.getSize());
-//        
-//        QueryDemoResDto res = new QueryDemoResDto();   
-//        res.setPageInfo(pi);
-//        res.setRspCd(SysCode.SUCCESS);
-//      
-//        return res;
-//    }
-    
-    
+
     //事务成功，业务成功
     @RequestMapping(value = "/insert.do")
     public @ResponseBody QueryDemoResDto insert(HttpSession session)  {
