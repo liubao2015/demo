@@ -44,7 +44,8 @@ public class DemoDubboService extends Domain implements  IDemoDubboService{
     public String sayHello(String name) {
        
         Person u1 =  (Person) SpringContextHolder.getBean(Person.class);
-        u1.setName(name);
+        //u1.setName(name);
+        u1.setDesc("ddd");
         u1.setAge(20);
         
         dao.addPerson(u1);

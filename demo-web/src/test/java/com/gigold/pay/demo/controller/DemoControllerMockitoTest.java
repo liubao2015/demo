@@ -145,7 +145,7 @@ public class DemoControllerMockitoTest extends BaseTest {
         PowerMockito.mockStatic(SpringContextHolder.class);
         when(SpringContextHolder.getBean(Person.class)).thenReturn(p);
 
-        when(demoService.addPerson(any(Person.class))).thenReturn("11")
+        when(demoService.addPerson(any(Person.class))).thenReturn(11L)
             .thenThrow(new AbortException(CodeItem._FAIL, "failed"));
 
         // 测试插入成功
@@ -193,7 +193,7 @@ public class DemoControllerMockitoTest extends BaseTest {
         PowerMockito.mockStatic(SpringContextHolder.class);
         when(SpringContextHolder.getBean(Person.class)).thenReturn(p);
 
-        when(demoService.addPersonFail(any(Person.class))).thenReturn("11")
+        when(demoService.addPersonFail(any(Person.class))).thenReturn(11L)
                 .thenThrow(new AbortException(CodeItem._FAIL, "failed"));
 
         // 测试成功
@@ -230,7 +230,7 @@ public class DemoControllerMockitoTest extends BaseTest {
         PowerMockito.mockStatic(SpringContextHolder.class);
         when(SpringContextHolder.getBean(Person.class)).thenReturn(p);
 
-        when(demoService.addPerson(any(Person.class))).thenReturn("11")
+        when(demoService.addPerson(any(Person.class))).thenReturn(11L)
                 .thenThrow(new AbortException(CodeItem._FAIL, "failed"));
 
         // 测试成功
@@ -267,7 +267,7 @@ public class DemoControllerMockitoTest extends BaseTest {
         PowerMockito.mockStatic(SpringContextHolder.class);
         when(SpringContextHolder.getBean(Person.class)).thenReturn(p);
 
-        when(demoService.addPerson(any(Person.class))).thenReturn("11")
+        when(demoService.addPerson(any(Person.class))).thenReturn(11L)
                 .thenThrow(new AbortException(CodeItem._FAIL, "failed"));
 
         // 测试成功
@@ -304,7 +304,7 @@ public class DemoControllerMockitoTest extends BaseTest {
         PowerMockito.mockStatic(SpringContextHolder.class);
         when(SpringContextHolder.getBean(Person.class)).thenReturn(p);
 
-        when(demoService.addPerson(any(Person.class))).thenReturn("11")
+        when(demoService.addPerson(any(Person.class))).thenReturn(11L)
                 .thenThrow(new AbortException(CodeItem._FAIL, "failed"));
 
         // 测试成功

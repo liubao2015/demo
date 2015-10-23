@@ -27,7 +27,7 @@ public interface DemoDAO {
 
   public List<Person> searchALL();
 
-  public String addPerson(Person p);
+  public Long addPerson(Person p);
 
   public boolean modifyPerson(Person p);
 }

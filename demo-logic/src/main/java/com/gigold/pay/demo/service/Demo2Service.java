@@ -44,13 +44,13 @@ public class Demo2Service extends Domain {
      * @return the string
      * @throws AbortException the abort exception
      */
-    public String addPerson(final Person p) {
+    public Long addPerson(final Person p) {
        
 
         // 事务模版开启事务
-        String personId = transactionTemplate.execute(new TransactionCallback<String>() {
+        Long personId = transactionTemplate.execute(new TransactionCallback<Long>() {
             @Override
-            public String doInTransaction(TransactionStatus status) {
+            public Long doInTransaction(TransactionStatus status) {
                 try {
                     dao.addPerson(p);
                     debug("调用addPerson");

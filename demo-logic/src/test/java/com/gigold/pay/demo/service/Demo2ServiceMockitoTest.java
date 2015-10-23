@@ -85,18 +85,18 @@ public class Demo2ServiceMockitoTest extends BaseTest {
 
         // 模拟设置期望
 
-        when(demoDAO.addPerson(any(Person.class))).thenReturn("1");
-        when(demoService.addPerson(any(Person.class))).thenReturn("1")
+        when(demoDAO.addPerson(any(Person.class))).thenReturn(1L);
+        when(demoService.addPerson(any(Person.class))).thenReturn(1L)
             .thenThrow(new AbortException(CodeItem._FAIL, "failed"))
             .thenThrow(new RuntimeException("my failed"));
         // 测试正常新增
-        String id1 = demo2Service.addPerson(new Person());
-        Assert.assertEquals("1", id1);
+        Long id1 = demo2Service.addPerson(new Person());
+        Assert.assertTrue(1L== id1);
         // 测试抛出AbortException
-        String id2 = demo2Service.addPerson(new Person());
+        Long id2 = demo2Service.addPerson(new Person());
         Assert.assertNull(id2);
         // 测试抛出未知RuntimeException
-        String id3 = demo2Service.addPerson(new Person());
+        Long id3 = demo2Service.addPerson(new Person());
         Assert.assertNull(id3);
 
         // 确认执行顺序、次数与传入参数

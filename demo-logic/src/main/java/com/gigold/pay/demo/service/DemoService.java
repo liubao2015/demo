@@ -49,14 +49,14 @@ public class DemoService {
         return dao.searchForupdate(name);
     }
 
-    public String addPerson(Person p) throws AbortException {
+    public Long addPerson(Person p) throws AbortException {
 //        throw new AbortException(CodeItem._FAIL, "failed，but the data inserted");
 //        throw new PendingException(CodeItem._FAIL,"failed，but the data inserted");
         return dao.addPerson(p);
 
     }
 
-    public String addPersonFail(Person p) throws AbortException {
+    public Long addPersonFail(Person p) throws AbortException {
         return dao.addPerson(p);
         //        throw new AbortException(CodeItem._FAIL,"failed");
     }
