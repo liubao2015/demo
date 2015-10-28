@@ -81,7 +81,7 @@
         <dependency>
             <groupId>com.gigold.pay</groupId>
             <artifactId>pay-framework-version</artifactId>
-            <version>0.1.0-SNAPSHOT</version>
+            <version>${framework.version}</version>
         </dependency>
 
         <!-- modules end -->
