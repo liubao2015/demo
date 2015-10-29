@@ -146,7 +146,7 @@
   
   <modules>
     <module>demo-web</module>
-    <module>demo-logic</module>
     <module>demo-domain</module>
+    <module>demo-rpc</module>
   </modules>
 </project>

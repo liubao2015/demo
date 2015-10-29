@@ -54,7 +54,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.gigold.pay</groupId>
-			<artifactId>demo-logic</artifactId>
+			<artifactId>demo-rpc</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
