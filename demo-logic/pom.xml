@@ -8,16 +8,15 @@
     <version>1.0.0</version>
   </parent>
   <artifactId>demo-logic</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
   <name>demo-logic</name>
   <url>http://maven.apache.org</url>
   
   <dependencies>
     <dependency>
-				<groupId>com.gigold.pay</groupId>
-				<artifactId>demo-domain</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
-			</dependency>
-			
-			
+		<groupId>com.gigold.pay</groupId>
+		<artifactId>demo-domain</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>						
   </dependencies>
 </project>

@@ -35,7 +35,7 @@ public class Demo2Service extends Domain {
     private DemoDAO             dao;
 
     @Autowired
-    private GigoldTransactionTemplate transactionTemplate;
+    private GigoldTransactionTemplate newTransactionTemplate;
 
     /**
      * Add person string.
@@ -48,7 +48,7 @@ public class Demo2Service extends Domain {
        
 
         // 事务模版开启事务
-        Long personId = transactionTemplate.execute(new TransactionCallback<Long>() {
+        Long personId = newTransactionTemplate.execute(new TransactionCallback<Long>() {
             @Override
             public Long doInTransaction(TransactionStatus status) {
                 try {
@@ -116,9 +116,9 @@ public class Demo2Service extends Domain {
     /**
      * Sets transaction template.
      *
-     * @param transactionTemplate the transaction template
+     * @param newTransactionTemplate the transaction template
      */
-    public void setTransactionTemplate(GigoldTransactionTemplate transactionTemplate) {
-        this.transactionTemplate = transactionTemplate;
+    public void setNewTransactionTemplate(GigoldTransactionTemplate newTransactionTemplate) {
+        this.newTransactionTemplate = newTransactionTemplate;
     }
 }

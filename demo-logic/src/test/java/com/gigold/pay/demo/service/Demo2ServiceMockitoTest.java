@@ -55,7 +55,7 @@ public class Demo2ServiceMockitoTest extends BaseTest {
     @Mock
     private DemoService               demoService;
 
-    private GigoldTransactionTemplate transactionTemplate = new TransactionTemplateStuk();
+    private GigoldTransactionTemplate newTransactionTemplate = new TransactionTemplateStuk();
 
     /**
      * ====================== 测试对象定义 ==========================
@@ -72,7 +72,7 @@ public class Demo2ServiceMockitoTest extends BaseTest {
         // 测试对象中被mock对象赋值
         demo2Service.setDao(demoDAO);
         demo2Service.setService(demoService);
-        demo2Service.setTransactionTemplate(transactionTemplate);
+        demo2Service.setNewTransactionTemplate(newTransactionTemplate);
     }
 
     /**
