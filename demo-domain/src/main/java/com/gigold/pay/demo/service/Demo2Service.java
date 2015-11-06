@@ -92,7 +92,9 @@ public class Demo2Service extends Domain {
      * @return the person
      */
     public Person query(String name) {
-        return service.query(name);
+        Person p = new Person();
+        p.setName(name);
+        return service.query(p);
     }
 
     /**

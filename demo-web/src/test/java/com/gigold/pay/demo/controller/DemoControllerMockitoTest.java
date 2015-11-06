@@ -72,7 +72,7 @@ public class DemoControllerMockitoTest extends BaseTest {
      * Test query demo res dto.
      */
     @Test
-    public void testQueryDemoResDto() {
+    public void testQuery() {
         // 数据初始化
         final Person p = new Person();
         p.setId("1");
@@ -81,28 +81,28 @@ public class DemoControllerMockitoTest extends BaseTest {
         p.setDesc("测试");
 
         QueryDemoReqDto dto = new QueryDemoReqDto();
-        dto.setPerson(p);
+        dto.setName("张三");
 
         // 模拟设置期望
-        when(demoService.query(anyString())).thenReturn(p).thenReturn(null);
+        when(demoService.query(any(Person.class))).thenReturn(p).thenReturn(null);
         // 测试查询成功
         QueryDemoResDto result1 = demoController.query(dto);
         Assert.assertEquals(SysCode.SUCCESS, result1.getRspCd());
-        Assert.assertEquals("1", result1.getPerson().getId());
+        Assert.assertEquals("1", result1.getId());
 
         // 测试查询失败
         QueryDemoResDto result2 = demoController.query(dto);
         Assert.assertEquals("D0000", result2.getRspCd());
 
         // 确认执行顺序、次数与传入参数
-        verify(demoService, times(2)).query(anyString());
+        verify(demoService, times(2)).query(any(Person.class));
     }
 
     /**
      * Test query demo res dto 1.
      */
     @Test
-    public void testQueryDemoResDto1() {
+    public void testQuery2() {
         // 数据初始化
         final Person p = new Person();
         p.setId("1");
@@ -111,18 +111,18 @@ public class DemoControllerMockitoTest extends BaseTest {
         p.setDesc("测试");
 
         // 模拟设置期望
-        when(demoService.query(anyString())).thenReturn(p).thenReturn(null);
+        when(demoService.query(any(Person.class))).thenReturn(p).thenReturn(null);
         // 测试查询成功
         QueryDemoResDto result1 = demoController.query2();
         Assert.assertEquals(SysCode.SUCCESS, result1.getRspCd());
-        Assert.assertEquals("1", result1.getPerson().getId());
+        Assert.assertEquals("1", result1.getId());
 
         // 测试查询失败
         QueryDemoResDto result2 = demoController.query2();
         Assert.assertEquals("D0000", result2.getRspCd());
 
         // 确认执行顺序、次数与传入参数
-        verify(demoService, times(2)).query(anyString());
+        verify(demoService, times(2)).query(any(Person.class));
     }
 
     /**

@@ -138,13 +138,13 @@ public class Demo2ServiceMockitoTest extends BaseTest {
         p.setDesc("测试");
 
         // 模拟设置期望
-        when(demoService.query(anyString())).thenReturn(p);
+        when(demoService.query(any(Person.class))).thenReturn(p);
         // 测试查询
         Person person = demo2Service.query("随便输入");
         Assert.assertEquals("1", person.getId());
         Assert.assertEquals("张三", person.getName());
         Assert.assertEquals(18, person.getAge());
         // 确认执行顺序、次数与传入参数
-        verify(demoService, times(1)).query("随便输入");
+        verify(demoService, times(1)).query(any(Person.class));
     }
 }

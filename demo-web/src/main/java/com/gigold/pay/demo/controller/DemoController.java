@@ -27,6 +27,7 @@ import com.gigold.pay.framework.core.exception.AbortException;
 
 import com.gigold.pay.framework.web.BaseController;
 import com.gigold.pay.framework.web.ReqHeader;
+import com.gigold.pay.framework.web.RequestDto;
 
 
 
@@ -56,35 +57,46 @@ public class DemoController extends BaseController {
      */
     @RequestMapping(value = "/query.do")
     public @ResponseBody QueryDemoResDto query(@RequestBody QueryDemoReqDto dto)  {
-        
-        debug("调用query：");
-        dto.validate();
         QueryDemoResDto res = new QueryDemoResDto();
-        Person p=demoService.query(dto.getPerson().getName());
-        debug("传入的参数"+dto.getPerson().getName());
-        if(p!= null){
-            res.setPerson(p);
-            res.setRspCd(SysCode.SUCCESS);
-        }else{
+        debug("调用query：");
+        //检查参数
+        if(!dto.validate()){
+            res.setRspCd(CodeItem.DEMO_FAIL);
+            return res;
+        }
+        try{
+            Person inputPerson = createBO(dto, Person.class);
+        
+            Person p=demoService.query(inputPerson);
+            debug("传入的参数"+dto.getName());
+            if(p!= null){
+                updateDTO(p,res);
+               
+                res.setRspCd(SysCode.SUCCESS);
+            }else{
+                res.setRspCd(CodeItem.DEMO_FAIL);
+            }
+        }catch(Exception e){
             res.setRspCd(CodeItem.DEMO_FAIL);
         }
         return res;
     }
     
+    
+    //演示http无参数情况
     @RequestMapping(value = "/query2.do")
     public @ResponseBody QueryDemoResDto query2()  {
-        
-        debug("调用query：");
         QueryDemoResDto res = new QueryDemoResDto();
-        
+        debug("调用query：");
         
         ReqHeader header =getHeader();
         debug("请求的Session ID＝"+header.getTokenId());
-        
-        Person p=demoService.query("4");
-        debug("传入的参数4");
+        Person input = new Person();
+        input.setName("test");
+        Person p=demoService.query(input);
+        debug("传入的参数test");
         if(p!= null){
-            res.setPerson(p);
+            res.updateDTO(p);
             res.setRspCd(SysCode.SUCCESS);
         }else{
             res.setRspCd(CodeItem.DEMO_FAIL);
@@ -92,17 +104,17 @@ public class DemoController extends BaseController {
         return res;
     }
     
-
+    //演示http无参数情况，且需要访问session的情况
     //事务成功，业务成功
     @RequestMapping(value = "/insert.do")
     public @ResponseBody QueryDemoResDto insert(HttpSession session)  {
-        
+        QueryDemoResDto res = new QueryDemoResDto();
         debug("调用insert：");
         session.setAttribute("test", "陈志铉");
         session.setAttribute("test1", "czx");
         Person p = DomainFactory.getInstance().getDomain(Person.class);
         p.setDesc("事务成功");
-        QueryDemoResDto res = new QueryDemoResDto();
+        
         try {
             demoService.addPerson(p);
             res.setRspCd(SysCode.SUCCESS);
@@ -115,15 +127,16 @@ public class DemoController extends BaseController {
         return res;
     }
     
-    
+    //演示http GET 请求带参数情况，且需要访问session的情况
     @RequestMapping(value = "/get.do")
     public @ResponseBody QueryDemoResDto get(HttpSession session)  {
+        QueryDemoResDto res = new QueryDemoResDto();
         debug("调用get：");
         String test = (String)session.getAttribute("test");
         String test1 = (String)session.getAttribute("test1");
         debug(test);
         debug(test1);
-        QueryDemoResDto res = new QueryDemoResDto();
+        
         res.setRspCd(SysCode.SUCCESS);
         
         return res;

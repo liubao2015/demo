@@ -20,6 +20,8 @@ import com.github.pagehelper.PageInfo;
  *
  */
 public class QueryDemoResDto extends ResponseDto{
+    
+    
     private PageInfo pageInfo;
     /**
      * @return the pageInfo
@@ -35,19 +37,50 @@ public class QueryDemoResDto extends ResponseDto{
         this.pageInfo = pageInfo;
     }
 
-    private Person person;
-
+    private String name;
+    private int age;
+    private String id;
     /**
-     * @return the person
+     * @return the id
      */
-    public Person getPerson() {
-        return person;
+    public String getId() {
+        return id;
     }
 
     /**
-     * @param person the person to set
+     * @param id the id to set
      */
-    public void setPerson(Person person) {
-        this.person = person;
+    public void setId(String id) {
+        this.id = id;
     }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the age
+     */
+    public int getAge() {
+        return age;
+    }
+
+    /**
+     * @param age the age to set
+     */
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+   
 }

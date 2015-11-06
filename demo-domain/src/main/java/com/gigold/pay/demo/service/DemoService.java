@@ -34,22 +34,41 @@ public class DemoService {
     @Autowired
     private DemoDAO dao;
 
-    public Person query(String name) {
-        return dao.search(name);
+    public Person query(Person person) {
+        //逻辑处理
+        if(person != null){
+            return dao.search(person.getName());
+        }else{
+            return null;
+        }
     }
 
     public PageInfo<Person> queryPage(int pageNum) {
+        //逻辑处理
+        //逻辑处理
+        //逻辑处理
         PageHelper.startPage(pageNum, 10, true);
         List<Person> list = dao.searchALL();
         PageInfo<Person> pi = new PageInfo(list);
         return pi;
     }
 
-    public Person queryForUpdate(String name) {
-        return dao.searchForupdate(name);
+    public Person queryForUpdate(Person person) {
+        //逻辑处理
+        //逻辑处理
+        //逻辑处理
+        if(person != null){
+            return dao.searchForupdate(person.getName());
+        }else{
+            return null;
+        }
     }
 
     public Long addPerson(Person p) throws AbortException {
+        //逻辑处理
+        //逻辑处理
+        //逻辑处理
+        
 //        throw new AbortException(CodeItem._FAIL, "failed，but the data inserted");
 //        throw new PendingException(CodeItem._FAIL,"failed，but the data inserted");
         return dao.addPerson(p);
@@ -57,11 +76,19 @@ public class DemoService {
     }
 
     public Long addPersonFail(Person p) throws AbortException {
+        //逻辑处理
+        //逻辑处理
+        //逻辑处理
+        
         return dao.addPerson(p);
         //        throw new AbortException(CodeItem._FAIL,"failed");
     }
 
     public boolean modifyPerson(Person p) throws AbortException {
+        //逻辑处理
+        //逻辑处理
+        //逻辑处理
+        
         return dao.modifyPerson(p);
     }
 

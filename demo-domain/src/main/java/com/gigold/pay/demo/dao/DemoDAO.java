@@ -13,7 +13,7 @@ import com.gigold.pay.demo.bo.Person;
 
 /**
  * Title: DemoDAO<br/>
- * Description: <br/>
+ * Description: DAO的参数可以是基本型，也可以是领域对象，推荐领域对象<br/>
  * Company: gigold<br/>
  * @author Devin
  * @date 2015年9月16日下午2:10:48
