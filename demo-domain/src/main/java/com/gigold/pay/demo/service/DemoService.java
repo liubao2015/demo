@@ -47,7 +47,7 @@ public class DemoService {
         //逻辑处理
         //逻辑处理
         //逻辑处理
-        PageHelper.startPage(pageNum, 10, true);
+        PageHelper.startPage(pageNum, 2, true);
         List<Person> list = dao.searchALL();
         PageInfo<Person> pi = new PageInfo(list);
         return pi;
