@@ -24,6 +24,6 @@ import com.gigold.pay.framework.core.exception.PendingException;
 public interface IDemoDubboService {
     
     public String sayHello(String name) throws AbortException;
-    public List getUsers() throws AbortException;
+    public UserListResDto getUsers()throws PendingException;
     public String sayHello2(String name) throws PendingException;
 }
