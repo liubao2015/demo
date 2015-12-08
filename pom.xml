@@ -46,7 +46,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <framework.version>0.1.2-SNAPSHOT</framework.version>
+        <framework.version>0.1.3-SNAPSHOT</framework.version>
 
         <!-- environment setting -->
         <jdk.version>1.7</jdk.version>
