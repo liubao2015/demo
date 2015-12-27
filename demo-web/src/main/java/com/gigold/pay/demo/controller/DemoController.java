@@ -21,10 +21,10 @@ import com.gigold.pay.demo.bo.Person;
 import com.gigold.pay.demo.service.DemoService;
 import com.gigold.pay.framework.base.DomainFactory;
 import com.gigold.pay.framework.base.SpringContextHolder;
-
+import com.gigold.pay.framework.cache.CacheFactory;
 import com.gigold.pay.framework.core.SysCode;
 import com.gigold.pay.framework.core.exception.AbortException;
-
+import com.gigold.pay.framework.core.exception.PendingException;
 import com.gigold.pay.framework.web.BaseController;
 import com.gigold.pay.framework.web.ReqHeader;
 import com.gigold.pay.framework.web.RequestDto;
@@ -132,6 +132,12 @@ public class DemoController extends BaseController {
     public @ResponseBody QueryDemoResDto get(HttpSession session)  {
         QueryDemoResDto res = new QueryDemoResDto();
         debug("调用get：");
+        try {
+            String curAcDate = (String) CacheFactory.getCacheClient().get("sssss");
+        } catch (PendingException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         String test = (String)session.getAttribute("test");
         String test1 = (String)session.getAttribute("test1");
         debug(test);
