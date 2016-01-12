@@ -15,12 +15,7 @@
     http://code.alibabatech.com/schema/dubbo/dubbo.xsd
     ">
 
-
-
 	<!-- 声明需要暴露的服务接口 -->
-
-	<dubbo:service interface="com.gigold.pay.demo.rpc.IDemoDubboService"
-		class="com.gigold.pay.demo.facade.DemoDubboFacade" version="1.0" />
-
+ <dubbo:reference id="demoDubboService" interface="com.gigold.pay.demo.rpc.IDemoDubboService"/>
 	
 </beans>
