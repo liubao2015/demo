@@ -7,8 +7,7 @@
  */
 package com.gigold.pay.demo.controller;
 
-import com.gigold.pay.demo.bo.Person;
-import com.gigold.pay.framework.web.RequestDto;
+import com.gigold.pay.framework.core.RequestDto;
 import com.github.pagehelper.PageInfo;
 
 /**

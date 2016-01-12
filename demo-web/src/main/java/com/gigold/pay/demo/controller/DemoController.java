@@ -9,7 +9,6 @@ package com.gigold.pay.demo.controller;
 
 import javax.servlet.http.HttpSession;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,17 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.gigold.pay.demo.bo.Person;
-
 import com.gigold.pay.demo.service.DemoService;
 import com.gigold.pay.framework.base.DomainFactory;
 import com.gigold.pay.framework.base.SpringContextHolder;
 import com.gigold.pay.framework.cache.CacheFactory;
+import com.gigold.pay.framework.core.ReqHeader;
 import com.gigold.pay.framework.core.SysCode;
 import com.gigold.pay.framework.core.exception.AbortException;
 import com.gigold.pay.framework.core.exception.PendingException;
 import com.gigold.pay.framework.web.BaseController;
-import com.gigold.pay.framework.web.ReqHeader;
-import com.gigold.pay.framework.web.RequestDto;
 
 
 
