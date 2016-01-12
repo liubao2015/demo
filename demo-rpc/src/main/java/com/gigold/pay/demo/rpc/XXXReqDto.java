@@ -7,7 +7,7 @@
  */
 package com.gigold.pay.demo.rpc;
 
-import com.gigold.pay.framework.web.RequestDto;
+import com.gigold.pay.framework.core.RequestDto;
 
 /**
  * Title: XXXReqDTO<br/>

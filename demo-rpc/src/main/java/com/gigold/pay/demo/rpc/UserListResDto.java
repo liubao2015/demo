@@ -7,9 +7,7 @@
  */
 package com.gigold.pay.demo.rpc;
 
-import java.io.Serializable;
-
-import com.gigold.pay.framework.web.ResponseDto;
+import com.gigold.pay.framework.core.ResponseDto;
 import com.github.pagehelper.PageInfo;
 
 /**

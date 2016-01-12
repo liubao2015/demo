@@ -15,5 +15,5 @@
 
 
 	<!-- 工程相关的配置文件引入 -->
-	<import resource="classpath*:/spring/default-mybatis-config.xml" />
+	<import resource="classpath*:/spring/default-orm-config.xml" />
 </beans>
