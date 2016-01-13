@@ -14,10 +14,10 @@ import com.gigold.pay.demo.bo.Person;
 import com.gigold.pay.demo.rpc.IDemoDubboService;
 import com.gigold.pay.demo.rpc.UserListResDto;
 import com.gigold.pay.demo.service.DemoService;
+import com.gigold.pay.framework.base.DomainUtils;
 import com.gigold.pay.framework.core.exception.AbortException;
 import com.gigold.pay.framework.core.exception.PendingException;
 import com.gigold.pay.framework.rpc.facade.Facade;
-import com.gigold.pay.framework.web.DomainUtils;
 import com.github.pagehelper.PageInfo;
 
 /**
