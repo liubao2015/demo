@@ -37,9 +37,9 @@
         <property name="username" value="${bus.mysql.username}" />
         <property name="password" value="${bus.mysql.password}" />
         <!-- 初始化连接大小 -->
-        <property name="initialSize" value="0" />
+        <property name="initialSize" value="${bus.mysql.initialSize}" />
         <!-- 连接池最大使用连接数量 -->
-        <property name="maxActive" value="20" />
+        <property name="maxActive" value="${bus.mysql.maxActive}" />
         <!-- 连接池最大空闲 -->
        <!--  <property name="maxIdle" value="20" /> -->
         <!-- 连接池最小空闲 -->
@@ -80,9 +80,9 @@
         <property name="username" value="${config.mysql.username}" />
         <property name="password" value="${config.mysql.password}" />
         <!-- 初始化连接大小 -->
-        <property name="initialSize" value="0" />
+        <property name="initialSize" value="${config.mysql.initialSize}" />
         <!-- 连接池最大使用连接数量 -->
-        <property name="maxActive" value="20" />
+        <property name="maxActive" value="${config.mysql.maxActive}" />
         <!-- 连接池最大空闲 -->
        <!--  <property name="maxIdle" value="20" /> -->
         <!-- 连接池最小空闲 -->
