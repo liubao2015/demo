@@ -14,8 +14,7 @@
     http://code.alibabatech.com/schema/dubbo
     http://code.alibabatech.com/schema/dubbo/dubbo.xsd
     ">
-   <!-- 加载数据库配置文件 -->
-   <import resource="classpath*:/spring/default-orm-config.xml" /> 
+ 
 	<!-- 声明需要暴露的服务接口 -->
 	<dubbo:service interface="com.gigold.pay.demo.rpc.IDemoDubboService"
 		class="com.gigold.pay.demo.facade.DemoDubboService"/>
