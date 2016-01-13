@@ -33,7 +33,6 @@ public class DemoDubboService implements IDemoDubboService {
 	 * @throws AbortException
 	 * @see com.gigold.pay.demo.rpc.IDemoDubboService#sayHello(java.lang.String)
 	 */
-	@Override
 	public String sayHello(String name) throws AbortException {
 		
 		return "hello dubbo";
@@ -46,7 +45,6 @@ public class DemoDubboService implements IDemoDubboService {
 	 * @throws PendingException
 	 * @see com.gigold.pay.demo.rpc.IDemoDubboService#getUsers()
 	 */
-	@Override
 	public UserListResDto getUsers() throws PendingException {
 		return null;
 	}
@@ -59,7 +57,6 @@ public class DemoDubboService implements IDemoDubboService {
 	 * @throws PendingException
 	 * @see com.gigold.pay.demo.rpc.IDemoDubboService#sayHello2(java.lang.String)
 	 */
-	@Override
 	public String sayHello2(String name) throws PendingException {
 		 return "hello dubbo 222";
 	}

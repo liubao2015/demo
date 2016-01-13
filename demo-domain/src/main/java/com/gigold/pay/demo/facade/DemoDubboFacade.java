@@ -7,21 +7,13 @@
  */
 package com.gigold.pay.demo.facade;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
-import com.alibaba.dubbo.rpc.service.EchoService;
 import com.gigold.pay.demo.bo.Person;
-import com.gigold.pay.demo.dao.DemoDAO;
 import com.gigold.pay.demo.rpc.IDemoDubboService;
 import com.gigold.pay.demo.rpc.UserListResDto;
 import com.gigold.pay.demo.service.DemoService;
-import com.gigold.pay.framework.base.SpringContextHolder;
-import com.gigold.pay.framework.core.Domain;
 import com.gigold.pay.framework.core.exception.AbortException;
 import com.gigold.pay.framework.core.exception.PendingException;
 import com.gigold.pay.framework.rpc.facade.Facade;
