@@ -49,7 +49,6 @@ public class Demo2Service extends Domain {
 
         // 事务模版开启事务
         Long personId = newTransactionTemplate.execute(new TransactionCallback<Long>() {
-            @Override
             public Long doInTransaction(TransactionStatus status) {
                 try {
                     dao.addPerson(p);
