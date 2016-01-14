@@ -8,7 +8,6 @@ public class DemoLockThread implements Runnable {
 
 	private LockService lockService;
 
-	@Override
 	public void run() {
 		String name = "demo-lock";
 		boolean success = this.lockService.tryLock(name, 1, TimeUnit.SECONDS);

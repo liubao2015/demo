@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -41,6 +40,8 @@ public class DemoController extends BaseController {
 
     @Autowired
     private DemoService demoService;
+    @Autowired
+    private DubboConsumerService dubboConsumerService;
     
     /**
      * Title: query<br/>
@@ -53,31 +54,41 @@ public class DemoController extends BaseController {
      * @throws Exception
      */
     @RequestMapping(value = "/query.do")
-    public @ResponseBody QueryDemoResDto query(@RequestBody QueryDemoReqDto dto)  {
+    public @ResponseBody QueryDemoResDto query()  {
         QueryDemoResDto res = new QueryDemoResDto();
         debug("调用query：");
-        //检查参数
-        if(!dto.validate()){
-            res.setRspCd(CodeItem.DEMO_FAIL);
-            return res;
-        }
-        try{
-            Person inputPerson = createBO(dto, Person.class);
-        
-            Person p=demoService.query(inputPerson);
-            debug("传入的参数"+dto.getName());
-            if(p!= null){
-                updateDTO(p,res);
-               
-                res.setRspCd(SysCode.SUCCESS);
-            }else{
-                res.setRspCd(CodeItem.DEMO_FAIL);
-            }
-        }catch(Exception e){
-            res.setRspCd(CodeItem.DEMO_FAIL);
-        }
+       
         return res;
     }
+    
+    
+//    @RequestMapping(value = "/query.do")
+//    public @ResponseBody QueryDemoResDto query(@RequestBody QueryDemoReqDto dto)  {
+//        QueryDemoResDto res = new QueryDemoResDto();
+//        debug("调用query：");
+//        //检查参数
+//        if(!dto.validate()){
+//            res.setRspCd(CodeItem.DEMO_FAIL);
+//            return res;
+//        }
+//        try{
+//            Person inputPerson = createBO(dto, Person.class);
+//        
+//            Person p=demoService.query(inputPerson);
+//            debug("传入的参数"+dto.getName());
+//            if(p!= null){
+//                updateDTO(p,res);
+//               
+//                res.setRspCd(SysCode.SUCCESS);
+//            }else{
+//                res.setRspCd(CodeItem.DEMO_FAIL);
+//            }
+//        }catch(Exception e){
+//            res.setRspCd(CodeItem.DEMO_FAIL);
+//        }
+//        return res;
+//    }
+    
     
     
     //演示http无参数情况
