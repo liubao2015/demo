@@ -131,7 +131,6 @@
 				<exclusion>  <!-- declare the exclusion here -->
 					<groupId>com.gigold.pay</groupId>
 					<artifactId>pay-framework-web</artifactId>
-					<version>0.1.5-SNAPSHOT</version>
 				</exclusion>
 			</exclusions>
 
