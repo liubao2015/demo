@@ -7,6 +7,8 @@
  */
 package com.gigold.pay.demo.rpc;
 
+import com.alibaba.dubbo.rpc.RpcException;
+
 /**
  * Title: IDubboService<br/>
  * Description: <br/>
@@ -18,5 +20,5 @@ package com.gigold.pay.demo.rpc;
 public interface IDubboService {
 
 	
-	public String hello();
+	public String hello() throws RpcException;
 }
