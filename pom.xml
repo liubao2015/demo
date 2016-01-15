@@ -9,7 +9,17 @@
 	<name>demo</name>
 	<description>演示整体框架使用情况	</description>
 
+	<!-- <build> <resources> <resource> <directory>src/main/java</directory> 
+		<includes> <include>**/*.properties</include> <include>**/*.xml</include> 
+		</includes> <filtering>false</filtering> </resource> <resource> <directory>src/main/resources</directory> 
+		</resource> </resources> <plugins> <plugin> <artifactId>maven-war-plugin</artifactId> 
+		<version>2.6</version> <configuration> <warSourceDirectory>webapp</warSourceDirectory> 
+		<failOnMissingWebXml>false</failOnMissingWebXml> </configuration> </plugin> 
+		<plugin> <artifactId>maven-compiler-plugin</artifactId> <version>3.3</version> 
+		<configuration> <source>1.7</source> <target>1.7</target> </configuration> 
+		</plugin> </plugins> </build> -->
 	<build>
+		<sourceDirectory>src/main/java</sourceDirectory>
 		<resources>
 			<resource>
 				<directory>src/main/java</directory>
@@ -23,26 +33,59 @@
 				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</testResource>
+		</testResources>
 		<plugins>
 			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.6</version>
-				<configuration>
-					<warSourceDirectory>webapp</warSourceDirectory>
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-				</configuration>
-			</plugin>
-			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.3</version>
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
+					<encoding>UTF-8</encoding>
+					<!-- <useIncrementalCompilation>false</useIncrementalCompilation> -->
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<attach>true</attach>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>compile</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration>
+					<argLine>-Xmx512m -XX:PermSize=128m -XX:MaxPermSize=128m</argLine>
+					<testFailureIgnore>true</testFailureIgnore>
+					<includes>
+						<include>**/*Test*.java</include>
+					</includes>
+					<excludes />
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -62,7 +105,7 @@
 		<repository>
 			<id>releases</id>
 			<name>Team Nexus Repository</name>
-			<url>http://123.57.152.75:8081/nexus/content/groups/public</url>
+			<url>http://123.57.152.75:8021/nexus/content/groups/public</url>
 		</repository>
 
 	</repositories>
@@ -84,9 +127,16 @@
 			<groupId>com.gigold.pay</groupId>
 			<artifactId>pay-framework-version</artifactId>
 			<version>0.1.5-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>  <!-- declare the exclusion here -->
+					<groupId>com.gigold.pay</groupId>
+					<artifactId>pay-framework-web</artifactId>
+				</exclusion>
+			</exclusions>
+
+
 		</dependency>
 		<!-- modules end -->
-
 
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -98,6 +148,11 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.11</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jmockit</groupId>
+			<artifactId>jmockit</artifactId>
+			<version>1.20</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jmock</groupId>
@@ -135,12 +190,12 @@
 		<repository>
 			<id>releases</id>
 			<name>Gigold Nexus Repository</name>
-			<url>http://123.57.152.75:8081/nexus/content/repositories/releases</url>
+			<url>http://123.57.152.75:8021/nexus/content/repositories/releases</url>
 		</repository>
 		<snapshotRepository>
 			<id>snapshots</id>
 			<name>Gigold Nexus Repository</name>
-			<url>http://123.57.152.75:8081/nexus/content/repositories/snapshots</url>
+			<url>http://123.57.152.75:8021/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 
@@ -149,5 +204,7 @@
 		<module>demo-web</module>
 		<module>demo-domain</module>
 		<module>demo-rpc</module>
+		<module>demo-dubbo-provider</module>
+		<module>demo-dubbo-consume</module>
 	</modules>
 </project>

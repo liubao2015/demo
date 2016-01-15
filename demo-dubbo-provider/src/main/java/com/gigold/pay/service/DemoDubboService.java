@@ -5,7 +5,7 @@
  * Company: gigold<br/>
  *
  */
-package com.gigold.pay.demo.facade;
+package com.gigold.pay.service;
 
 import org.springframework.stereotype.Service;
 
@@ -35,7 +35,7 @@ public class DemoDubboService implements IDemoDubboService {
 	 */
 	public String sayHello(String name) throws AbortException {
 		
-		return "hello dubbo";
+		return "hello "+name;
 	}
 
 	/* （non Javadoc）
