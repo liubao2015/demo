@@ -105,7 +105,7 @@
 		<repository>
 			<id>releases</id>
 			<name>Team Nexus Repository</name>
-			<url>http://123.57.152.75:8081/nexus/content/groups/public</url>
+			<url>http://123.57.152.75:8021/nexus/content/groups/public</url>
 		</repository>
 
 	</repositories>
@@ -190,12 +190,12 @@
 		<repository>
 			<id>releases</id>
 			<name>Gigold Nexus Repository</name>
-			<url>http://123.57.152.75:8081/nexus/content/repositories/releases</url>
+			<url>http://123.57.152.75:8021/nexus/content/repositories/releases</url>
 		</repository>
 		<snapshotRepository>
 			<id>snapshots</id>
 			<name>Gigold Nexus Repository</name>
-			<url>http://123.57.152.75:8081/nexus/content/repositories/snapshots</url>
+			<url>http://123.57.152.75:8021/nexus/content/repositories/snapshots</url>
 		</snapshotRepository>
 	</distributionManagement>
 

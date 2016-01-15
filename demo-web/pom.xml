@@ -68,7 +68,7 @@
 			<artifactId>demo-domain</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>com.gigold.pay</groupId>
 			<artifactId>demo-dubbo-consume</artifactId>
@@ -80,6 +80,10 @@
 			<version>${project.tomcat.version}</version>
 			<scope>provided</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>com.gigold.pay</groupId>
+			<artifactId>pay-framework-web</artifactId>
+			<version>0.1.5-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 </project>
