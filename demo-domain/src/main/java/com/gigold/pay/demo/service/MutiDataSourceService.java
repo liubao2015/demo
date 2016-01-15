@@ -17,8 +17,10 @@ public class MutiDataSourceService {
 	            context.start();
 	            FdcUpJrnService fcUpJrnService  = (FdcUpJrnService)SpringContextHolder.getBean("fdcUpJrnService");
 	            PubMsgService pubMsgService  = (PubMsgService)SpringContextHolder.getBean("pubMsgService");
-	            FdcUpJrn fdcUpJrn = fcUpJrnService.getFdcUpJrnById("1");	            
-	            List list  = pubMsgService.getMsgInfo("FDC");
+	            FdcUpJrn fdcUpJrn = fcUpJrnService.getFdcUpJrnById("1");	
+	            for(int i=0;i<10;i++){
+	              List list  = pubMsgService.getMsgInfo("FDC");
+	            }
 	            
 	            
 	        } catch (Exception e) {
