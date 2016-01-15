@@ -1,0 +1,22 @@
+/**
+ * Title: IDubboService.java<br/>
+ * Description: <br/>
+ * Copyright: Copyright (c) 2016<br/>
+ * Company: gigold<br/>
+ *
+ */
+package com.gigold.pay.demo.rpc;
+
+/**
+ * Title: IDubboService<br/>
+ * Description: <br/>
+ * Company: gigold<br/>
+ * @author xiebin
+ * @date 2016年1月14日下午9:14:14
+ *
+ */
+public interface IDubboService {
+
+	
+	public String hello();
+}

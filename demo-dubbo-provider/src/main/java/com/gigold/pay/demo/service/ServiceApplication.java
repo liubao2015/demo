@@ -1,4 +1,4 @@
-package com.gigold.pay.service;
+package com.gigold.pay.demo.service;
 
 import com.alibaba.dubbo.container.Main;
 
