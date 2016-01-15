@@ -48,11 +48,11 @@
             </includes>
         </fileSet>
         <fileSet>
-            <directory>${project.basedir}/../wrapper/logs</directory>
+            <directory>${project.basedir}/wrapper/logs</directory>
             <outputDirectory>/logs</outputDirectory>
-            <includes>
+            <!-- <includes>
                 <include>EMPTY</include>
-            </includes>
+            </includes> -->
         </fileSet>
     </fileSets>
 </assembly>
