@@ -12,6 +12,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.dubbo.config.annotation.Reference;
+import com.alibaba.dubbo.rpc.RpcException;
+import com.gigold.pay.demo.rpc.IDubboService;
 import com.gigold.pay.demo.service.DubboConsumerService;
 import com.gigold.pay.framework.core.ResponseDto;
 import com.gigold.pay.framework.core.SysCode;
@@ -33,16 +36,16 @@ public class DubboController extends BaseController {
 
     @Autowired 
   public DubboConsumerService dubboConsumerService;
-    
+    @Reference
+	public IDubboService dubboService;
     /**
-     * Title: query<br/>
-     * Description: <br/>
      * 
-     * @author ousei
-     * @date 2014年12月15日下午9:05:03
-     *
-     * @return ${返回信息描述}
-     * @throws Exception
+     * Title: query<br/>
+     * Description: 通过service包装一层来调用dubbo<br/>
+     * @author xiebin
+     * @date 2016年1月15日上午11:42:08
+     *  
+     * @return
      */
     @RequestMapping(value = "/query.do")
     public @ResponseBody ResponseDto query()  {
@@ -55,6 +58,30 @@ public class DubboController extends BaseController {
         	res.setRspInf(message);
 		} catch (PendingException e) {
 			res.setRspCd(e.getCode());
+			e.printStackTrace();
+		}
+        return res;
+    }
+    /**
+     * 
+     * Title: getInfo<br/>
+     * Description: 直接在controoler中引用dubbo服务<br/>
+     * @author xiebin
+     * @date 2016年1月15日上午11:42:47
+     *
+     * @return
+     */
+    @RequestMapping(value = "/get.do")
+    public @ResponseBody ResponseDto getInfo()  {
+    	ResponseDto res = new ResponseDto();
+        debug("调用query：");
+        String message;
+		try {
+			message = dubboService.hello();
+			res.setRspCd(SysCode.SUCCESS);
+        	res.setRspInf(message);
+		} catch (RpcException e) {
+			res.setRspCd(SysCode.RPC_FAIL);
 			e.printStackTrace();
 		}
         return res;
