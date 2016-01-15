@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.gigold.pay.demo.bo.FdcUpJrn;
 import com.gigold.pay.demo.bo.Person;
 import com.gigold.pay.demo.service.DemoService;
+import com.gigold.pay.demo.service.DubboConsumerService;
 import com.gigold.pay.demo.service.FdcUpJrnService;
 import com.gigold.pay.demo.service.PubMsgService;
 import com.gigold.pay.framework.base.DomainFactory;
@@ -29,7 +30,6 @@ import com.gigold.pay.framework.core.SysCode;
 import com.gigold.pay.framework.core.exception.AbortException;
 import com.gigold.pay.framework.core.exception.PendingException;
 import com.gigold.pay.framework.web.BaseController;
-import com.gigold.pay.service.DubboConsumerService;
 
 
 
