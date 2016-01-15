@@ -16,7 +16,13 @@
     ">
  
 	<!-- 声明需要暴露的服务接口 -->
-	<dubbo:service interface="com.gigold.pay.demo.rpc.IDemoDubboService"
-		class="com.gigold.pay.service.DemoDubboService"/>
+	<!-- <dubbo:service interface="com.gigold.pay.demo.rpc.IDemoDubboService"
+		class="com.gigold.pay.service.DemoDubboService"/> -->
+
+
+
+
+<dubbo:service interface="com.gigold.pay.demo.rpc.IDubboService"
+		class="com.gigold.pay.demo.service.DubboService"/>
 
 </beans>

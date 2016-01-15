@@ -10,9 +10,9 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.gigold.pay.demo.service.DubboConsumerService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath*:/**/spring/**/*Beans.xml"})
-public class DubboConsumerServiceTest {
+public class WebDubboConsumerServiceTest {
 	@Autowired
-	public  DubboConsumerService dubboConsumerService;
+	private DubboConsumerService dubboConsumerService;
 	@Test
 	public void testSayHello(){
 		

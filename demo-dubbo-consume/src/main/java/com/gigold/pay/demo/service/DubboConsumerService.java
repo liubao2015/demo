@@ -1,13 +1,10 @@
-package com.gigold.pay.service;
+package com.gigold.pay.demo.service;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.gigold.pay.demo.rpc.IDemoDubboService;
+import com.gigold.pay.demo.rpc.IDubboService;
 import com.gigold.pay.framework.core.Domain;
-import com.gigold.pay.framework.core.exception.AbortException;
 
 /**
  * Hello world!
@@ -20,14 +17,13 @@ public class DubboConsumerService  extends Domain
 	/** serialVersionUID */
 	private static final long serialVersionUID = 1L;
 	@Reference
-	private IDemoDubboService demoDubboService;
-	
+	public IDubboService dubboService;
 	
 	public String sayHello(String info){
 		String message=null;
 		try {
-			message=demoDubboService.sayHello(info);
-		} catch (AbortException e) {
+			message=dubboService.hello();
+		} catch (Exception e) {
 			debug(e.getMessage());
 			e.printStackTrace();
 		}

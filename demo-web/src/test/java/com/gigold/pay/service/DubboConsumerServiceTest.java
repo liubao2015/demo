@@ -12,7 +12,7 @@ import com.gigold.pay.demo.service.DubboConsumerService;
 @ContextConfiguration({"classpath*:/**/spring/**/*Beans.xml"})
 public class DubboConsumerServiceTest {
 	@Autowired
-	public  DubboConsumerService dubboConsumerService;
+	private DubboConsumerService dubboConsumerService;
 	@Test
 	public void testSayHello(){
 		
