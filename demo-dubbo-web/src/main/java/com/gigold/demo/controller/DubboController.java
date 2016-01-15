@@ -12,11 +12,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.gigold.pay.demo.service.DubboConsumerService;
 import com.gigold.pay.framework.core.ResponseDto;
 import com.gigold.pay.framework.core.SysCode;
-import com.gigold.pay.framework.util.common.StringUtil;
+import com.gigold.pay.framework.core.exception.PendingException;
 import com.gigold.pay.framework.web.BaseController;
-import com.gigold.pay.service.WebDubboConsumerService;
 
 
 
@@ -31,8 +31,8 @@ import com.gigold.pay.service.WebDubboConsumerService;
 @RequestMapping("/")
 public class DubboController extends BaseController {
 
-    @Autowired
-    public WebDubboConsumerService dubboConsumerService;
+    @Autowired 
+  public DubboConsumerService dubboConsumerService;
     
     /**
      * Title: query<br/>
@@ -48,13 +48,15 @@ public class DubboController extends BaseController {
     public @ResponseBody ResponseDto query()  {
     	ResponseDto res = new ResponseDto();
         debug("调用query：");
-        String message=dubboConsumerService.sayHello("dubbo");
-        if(StringUtil.isNotBlank(message)){
-        	res.setRspCd(SysCode.SUCCESS);
+        String message;
+		try {
+			message = dubboConsumerService.sayHello("dubbo");
+			res.setRspCd(SysCode.SUCCESS);
         	res.setRspInf(message);
-        }else{
-        	res.setRspCd(SysCode.RPC_FAIL);
-        }
+		} catch (PendingException e) {
+			res.setRspCd(e.getCode());
+			e.printStackTrace();
+		}
         return res;
     }
     

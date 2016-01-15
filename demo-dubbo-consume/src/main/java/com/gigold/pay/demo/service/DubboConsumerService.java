@@ -3,8 +3,11 @@ package com.gigold.pay.demo.service;
 import org.springframework.stereotype.Service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.alibaba.dubbo.rpc.RpcException;
 import com.gigold.pay.demo.rpc.IDubboService;
 import com.gigold.pay.framework.core.Domain;
+import com.gigold.pay.framework.core.SysCode;
+import com.gigold.pay.framework.core.exception.PendingException;
 
 /**
  * Hello world!
@@ -19,13 +22,22 @@ public class DubboConsumerService  extends Domain
 	@Reference
 	public IDubboService dubboService;
 	
-	public String sayHello(String info){
+	
+	
+	
+	public String sayHello(String info) throws PendingException{
 		String message=null;
-		try {
-			message=dubboService.hello();
-		} catch (Exception e) {
-			debug(e.getMessage());
-			e.printStackTrace();
+		if (dubboService != null) {
+			try {
+				message=dubboService.hello();
+			}  catch (RpcException e) {
+				throw new PendingException(SysCode.RPC_FAIL, "服务不可用", e);
+			} catch (Exception e) {
+				throw new PendingException(SysCode.RPC_FAIL, "其他异常", e);
+			}
+		} else {
+			throw new PendingException(SysCode.RPC_FAIL, "服务不可用");
+
 		}
 		return message;
 	}

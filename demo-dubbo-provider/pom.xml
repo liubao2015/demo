@@ -9,7 +9,7 @@
   </parent>
   <groupId>com.gigold.pay</groupId>
   <artifactId>demo-dubbo-provider</artifactId>
-  <version>1.0.0</version>
+  <version>0.0.1-SNAPSHOT</version>
   <name>demo-dubbo-provider</name>
   <url>http://maven.apache.org</url>
   <properties>

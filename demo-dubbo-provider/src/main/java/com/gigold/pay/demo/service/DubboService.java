@@ -7,6 +7,7 @@
  */
 package com.gigold.pay.demo.service;
 
+import com.alibaba.dubbo.rpc.RpcException;
 import com.gigold.pay.demo.rpc.IDubboService;
 
 /**
@@ -26,7 +27,7 @@ public class DubboService implements IDubboService {
 	 * @see com.gigold.pay.demo.rpc.IDubboService#hello()
 	 */
 	@Override
-	public String hello() {
+	public String hello() throws RpcException{
 		return "hello dubbo";
 	}
 
