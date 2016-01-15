@@ -8,7 +8,7 @@
     <version>1.0.0</version>
   </parent>
   <artifactId>demo-dubbo-consume</artifactId>
-  <version>1.0.0-SNAPSHOT</version>
+   <version>0.0.1-SNAPSHOT</version>
   <name>demo-dubbo-consume</name>
   <url>http://maven.apache.org</url>
   <properties>
