@@ -17,7 +17,7 @@ import com.alibaba.dubbo.rpc.RpcException;
  * @date 2016年1月14日下午9:14:14
  *
  */
-public interface IDubboService {
+public interface DubboServiceFacade {
 
 	
 	public String hello() throws RpcException;

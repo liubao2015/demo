@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.rpc.RpcException;
-import com.gigold.pay.demo.rpc.IDubboService;
+import com.gigold.pay.demo.rpc.DubboServiceFacade;
 import com.gigold.pay.demo.service.DubboConsumerService;
 import com.gigold.pay.framework.core.ResponseDto;
 import com.gigold.pay.framework.core.SysCode;
@@ -37,7 +37,7 @@ public class DubboController extends BaseController {
     @Autowired 
   public DubboConsumerService dubboConsumerService;
     @Reference
-	public IDubboService dubboService;
+	public DubboServiceFacade dubboService;
     /**
      * 
      * Title: query<br/>

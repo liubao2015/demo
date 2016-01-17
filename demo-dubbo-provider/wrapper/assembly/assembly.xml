@@ -47,12 +47,12 @@
                 <include>wrapper.conf</include>
             </includes>
         </fileSet>
-        <fileSet>
+       <!--  <fileSet>
             <directory>${project.basedir}/wrapper/logs</directory>
             <outputDirectory>/logs</outputDirectory>
-            <!-- <includes>
+            <includes>
                 <include>EMPTY</include>
-            </includes> -->
-        </fileSet>
+            </includes>
+        </fileSet> -->
     </fileSets>
 </assembly>
