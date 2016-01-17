@@ -8,6 +8,7 @@
 package com.gigold.pay.demo.rpc;
 
 import com.gigold.pay.framework.core.RequestDto;
+import com.gigold.pay.framework.core.exception.OtherExceptionCollect;
 
 /**
  * Title: XXXReqDTO<br/>
@@ -18,5 +19,18 @@ import com.gigold.pay.framework.core.RequestDto;
  *
  */
 public class XXXReqDto extends RequestDto{
+
+	/* （non Javadoc）
+	 * Title: validate<br/>
+	 * <p>Description: <br/>
+	 * @return
+	 * @throws OtherExceptionCollect
+	 * @see com.gigold.pay.framework.core.RequestDto#validate()
+	 */
+	@Override
+	public boolean validate() throws OtherExceptionCollect {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

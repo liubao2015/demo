@@ -8,7 +8,7 @@
 package com.gigold.pay.demo.service;
 
 import com.alibaba.dubbo.rpc.RpcException;
-import com.gigold.pay.demo.rpc.IDubboService;
+import com.gigold.pay.demo.rpc.DubboServiceFacade;
 
 /**
  * Title: DubboService<br/>
@@ -18,7 +18,7 @@ import com.gigold.pay.demo.rpc.IDubboService;
  * @date 2016年1月14日下午9:15:06
  *
  */
-public class DubboService implements IDubboService {
+public class DubboServiceImpl implements DubboServiceFacade {
 
 	/* （non Javadoc）
 	 * Title: hello<br/>

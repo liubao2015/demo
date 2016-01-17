@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.rpc.RpcException;
-import com.gigold.pay.demo.rpc.IDubboService;
+import com.gigold.pay.demo.rpc.DubboServiceFacade;
 import com.gigold.pay.framework.core.Domain;
 import com.gigold.pay.framework.core.SysCode;
 import com.gigold.pay.framework.core.exception.PendingException;
@@ -20,7 +20,7 @@ public class DubboConsumerService  extends Domain
 	/** serialVersionUID */
 	private static final long serialVersionUID = 1L;
 	@Reference
-	public IDubboService dubboService;
+	public DubboServiceFacade dubboService;
 	
 	
 	
