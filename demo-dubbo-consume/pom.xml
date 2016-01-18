@@ -17,7 +17,7 @@
   <dependencies>
     <dependency>
 		<groupId>com.gigold.pay</groupId>
-		<artifactId>demo-rpc</artifactId>
+		<artifactId>demo-api</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</dependency>	
   </dependencies>
