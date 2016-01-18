@@ -16,8 +16,6 @@
     ">
  
 	<!-- 声明需要暴露的服务接口 -->
-	<!-- <dubbo:service interface="com.gigold.pay.demo.rpc.IDemoDubboService"
-		class="com.gigold.pay.service.DemoDubboService"/> -->
 
     <!--  服务提供者filter,在Provider上尽量多配置Consumer端属性, 配置的覆盖规则：1) 方法级配置别优于接口级别，即小Scope优先 2) Consumer端配置 优于 Provider配置 优于 全局配置
 	<dubbo:provider retries="0" filter="resFilter,channelFilter" timeout="${dubbo.timeout}" >
@@ -26,7 +24,7 @@
 	 -->
 
 
-<dubbo:service interface="com.gigold.pay.demo.rpc.IDubboService"
-		class="com.gigold.pay.demo.service.DubboService"/>
+<dubbo:service interface="com.gigold.pay.demo.rpc.DubboServiceFacade"
+		class="com.gigold.pay.demo.service.DubboServiceImpl"/>
 
 </beans>
