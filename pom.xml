@@ -205,6 +205,9 @@
 		<module>demo-domain</module>
 		<module>demo-rpc</module>
 		<module>demo-dubbo-provider</module>
+		<module>demo-api</module>
+		<module>demo-dubbo-service</module>
 		<module>demo-dubbo-consume</module>
+		<module>demo-dubbo-web</module>
 	</modules>
 </project>
