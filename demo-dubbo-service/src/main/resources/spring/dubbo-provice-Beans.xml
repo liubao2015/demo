@@ -24,7 +24,7 @@
 	 -->
 
 
-<dubbo:service interface="com.gigold.pay.demo.DubboServiceFacade"
+<dubbo:service interface="com.gigold.pay.demo.service.DubboServiceFacade"
 		class="com.gigold.pay.demo.service.DubboServiceImpl"/>
 
 </beans>
