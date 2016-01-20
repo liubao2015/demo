@@ -9,13 +9,15 @@ package com.gigold.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.rpc.RpcException;
-import com.gigold.pay.demo.DubboServiceFacade;
 import com.gigold.pay.demo.service.DubboConsumerService;
+import com.gigold.pay.demo.service.DubboServiceFacade;
+import com.gigold.pay.demo.service.XXXReqDto;
 import com.gigold.pay.framework.core.ResponseDto;
 import com.gigold.pay.framework.core.SysCode;
 import com.gigold.pay.framework.core.exception.PendingException;
@@ -48,14 +50,23 @@ public class DubboController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/query.do")
-    public @ResponseBody ResponseDto query()  {
+    public @ResponseBody ResponseDto query(@RequestBody XXXReqDto reqDto)  {
     	ResponseDto res = new ResponseDto();
+    	if (reqDto == null) {
+			debug("reqDto 为空");
+			res.setRspCd(CodeItem.DEMO_FAIL);
+		}
+    	
+		if (!reqDto.validate()) {
+			debug("验证不通过");
+			res.setRspCd(CodeItem.VAILDATE_FAIL);
+		}
         debug("调用query：");
         String message;
 		try {
-			message = dubboConsumerService.sayHello("dubbo");
+			message = dubboConsumerService.sayHello(reqDto);
+			debug("调用Dubbo返回的信息－－－－－>"+message);
 			res.setRspCd(SysCode.SUCCESS);
-        	res.setRspInf(message);
 		} catch (PendingException e) {
 			res.setRspCd(e.getCode());
 			e.printStackTrace();
@@ -72,17 +83,27 @@ public class DubboController extends BaseController {
      * @return
      */
     @RequestMapping(value = "/get.do")
-    public @ResponseBody ResponseDto getInfo()  {
+    public @ResponseBody ResponseDto getInfo(@RequestBody XXXReqDto reqDto)  {
     	ResponseDto res = new ResponseDto();
-        debug("调用query：");
+    	if (reqDto == null) {
+			debug("reqDto 为空");
+			res.setRspCd(CodeItem.DEMO_FAIL);
+		}
+    	
+		if (!reqDto.validate()) {
+			debug("验证不通过");
+			res.setRspCd(CodeItem.VAILDATE_FAIL);
+		}
+    	
+        debug("调用getInfo：");
         String message;
 		try {
-			message = dubboService.hello();
+			message = dubboService.hello(reqDto);
 			res.setRspCd(SysCode.SUCCESS);
-        	res.setRspInf(message);
+			debug("调用Dubbo返回的信息－－－－－>"+message);
 		} catch (RpcException e) {
 			res.setRspCd(SysCode.RPC_FAIL);
-			e.printStackTrace();
+			debug("调用Dubbo服务失败");
 		}
         return res;
     }

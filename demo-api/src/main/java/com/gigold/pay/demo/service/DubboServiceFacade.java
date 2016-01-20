@@ -5,7 +5,7 @@
  * Company: gigold<br/>
  *
  */
-package com.gigold.pay.demo;
+package com.gigold.pay.demo.service;
 
 import com.alibaba.dubbo.rpc.RpcException;
 
@@ -20,5 +20,5 @@ import com.alibaba.dubbo.rpc.RpcException;
 public interface DubboServiceFacade {
 
 	
-	public String hello() throws RpcException;
+	public String hello(XXXReqDto reqDto) throws RpcException;
 }

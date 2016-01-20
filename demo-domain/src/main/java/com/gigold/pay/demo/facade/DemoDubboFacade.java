@@ -17,7 +17,7 @@ import com.gigold.pay.demo.service.DemoService;
 import com.gigold.pay.framework.base.DomainUtils;
 import com.gigold.pay.framework.core.exception.AbortException;
 import com.gigold.pay.framework.core.exception.PendingException;
-import com.gigold.pay.framework.rpc.facade.Facade;
+import com.gigold.pay.framework.rpc.service.AbstractDubboService;
 import com.github.pagehelper.PageInfo;
 
 /**
@@ -31,7 +31,7 @@ import com.github.pagehelper.PageInfo;
  */
 
 @Service
-public class DemoDubboFacade extends Facade implements IDemoDubboService {
+public class DemoDubboFacade extends AbstractDubboService implements IDemoDubboService {
 
     @Autowired
     private DemoService service;
