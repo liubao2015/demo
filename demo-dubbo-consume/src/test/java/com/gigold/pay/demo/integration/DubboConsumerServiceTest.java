@@ -1,4 +1,4 @@
-package com.gigold.pay.service;
+package com.gigold.pay.demo.integration;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.gigold.pay.demo.service.DubboConsumerService;
-import com.gigold.pay.demo.service.XXXReqDto;
+import com.gigold.pay.demo.facade.XXXReqDto;
+import com.gigold.pay.demo.integration.DubboConsumerService;
 import com.gigold.pay.framework.core.exception.PendingException;
 import com.gigold.pay.framework.service.AbstractService;
 @RunWith(SpringJUnit4ClassRunner.class)

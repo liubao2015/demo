@@ -1,9 +1,11 @@
-package com.gigold.pay.demo.service;
+package com.gigold.pay.demo.integration;
 
 import org.springframework.stereotype.Service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.rpc.RpcException;
+import com.gigold.pay.demo.facade.DubboServiceFacade;
+import com.gigold.pay.demo.facade.XXXReqDto;
 import com.gigold.pay.framework.core.SysCode;
 import com.gigold.pay.framework.core.exception.PendingException;
 import com.gigold.pay.framework.service.AbstractService;

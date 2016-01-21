@@ -5,7 +5,7 @@
  * Company: gigold<br/>
  *
  */
-package com.gigold.pay.demo.service;
+package com.gigold.pay.demo.facade;
 
 import com.gigold.pay.framework.core.RequestDto;
 import com.gigold.pay.framework.core.exception.OtherExceptionCollect;
