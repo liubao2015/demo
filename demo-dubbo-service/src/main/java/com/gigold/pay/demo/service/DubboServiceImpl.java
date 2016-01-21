@@ -9,6 +9,8 @@ package com.gigold.pay.demo.service;
 
 import com.alibaba.dubbo.rpc.RpcException;
 import com.gigold.pay.demo.bo.TestBean;
+import com.gigold.pay.demo.facade.DubboServiceFacade;
+import com.gigold.pay.demo.facade.XXXReqDto;
 import com.gigold.pay.framework.base.SpringContextHolder;
 import com.gigold.pay.framework.rpc.service.AbstractDubboService;
 

@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.alibaba.dubbo.rpc.RpcException;
-import com.gigold.pay.demo.service.DubboConsumerService;
-import com.gigold.pay.demo.service.DubboServiceFacade;
-import com.gigold.pay.demo.service.XXXReqDto;
+import com.gigold.pay.demo.facade.DubboServiceFacade;
+import com.gigold.pay.demo.facade.XXXReqDto;
+import com.gigold.pay.demo.integration.DubboConsumerService;
 import com.gigold.pay.framework.core.ResponseDto;
 import com.gigold.pay.framework.core.SysCode;
 import com.gigold.pay.framework.core.exception.PendingException;

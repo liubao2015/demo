@@ -5,7 +5,7 @@
  * Company: gigold<br/>
  *
  */
-package com.gigold.pay.demo.service;
+package com.gigold.pay.demo.facade;
 
 import com.alibaba.dubbo.rpc.RpcException;
 
