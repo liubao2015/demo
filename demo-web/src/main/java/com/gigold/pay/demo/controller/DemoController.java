@@ -47,7 +47,7 @@ public class DemoController extends BaseController {
     @Autowired
     private DemoService demoService;
     @Autowired
-    private DubboConsumerService dubboConsumerService;
+    private DubboConsumerIntegration dubboConsumerService;
     
     @Autowired
     private PubMsgService pubMsgService;
