@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.gigold.pay.demo.integration.DubboConsumerService;
+import com.gigold.pay.demo.integration.DubboConsumerIntegration;
 import com.gigold.pay.framework.core.SysCode;
 import com.gigold.pay.framework.util.common.StringUtil;
 import com.gigold.pay.framework.web.BaseController;
@@ -29,7 +29,7 @@ import com.gigold.pay.framework.web.BaseController;
 public class DubboController extends BaseController {
 
     @Autowired
-    private DubboConsumerService dubboConsumerService;
+    private DubboConsumerIntegration dubboConsumerService;
     
     /**
      * Title: query<br/>

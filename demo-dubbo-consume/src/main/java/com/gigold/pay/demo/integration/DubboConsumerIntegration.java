@@ -15,7 +15,7 @@ import com.gigold.pay.framework.service.AbstractService;
  *
  */
 @Service
-public class DubboConsumerService  extends AbstractService
+public class DubboConsumerIntegration  extends AbstractService
 {
     
 	@Reference

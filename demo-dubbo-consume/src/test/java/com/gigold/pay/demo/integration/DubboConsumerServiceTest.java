@@ -8,14 +8,14 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.gigold.pay.demo.facade.XXXReqDto;
-import com.gigold.pay.demo.integration.DubboConsumerService;
+import com.gigold.pay.demo.integration.DubboConsumerIntegration;
 import com.gigold.pay.framework.core.exception.PendingException;
 import com.gigold.pay.framework.service.AbstractService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath*:/**/spring/**/*Beans.xml"})
 public class DubboConsumerServiceTest extends AbstractService{
 	@Autowired
-	public  DubboConsumerService dubboConsumerService;
+	public  DubboConsumerIntegration dubboConsumerService;
 	@Test
 	public void testSayHello(){
 		XXXReqDto dto=new XXXReqDto();
