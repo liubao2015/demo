@@ -115,7 +115,35 @@
         <property name="filters" value="mergeStat" />
     </bean>
     
+     <!-- ========================================分隔线========================================= -->
+    <!-- 业务库 配置Spring的事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="busDataSource"/>
+    </bean>
+
+    <!-- 配置Spring的事务模版每次新事务 -->
+    <bean id="newTransactionTemplate" class="com.gigold.pay.framework.base.transaction.GigoldTransactionTemplate">
+        <property name="propagationBehaviorName" value="PROPAGATION_REQUIRES_NEW" />
+        <property name="transactionManager">
+            <ref bean="transactionManager" />
+        </property>
+    </bean>
+
+    <!-- 配置Spring的事务模版嵌套事务 -->
+    <bean id="nestedTransactionTemplate" class="com.gigold.pay.framework.base.transaction.GigoldTransactionTemplate">
+        <property name="propagationBehaviorName" value="PROPAGATION_NESTED" />
+        <property name="transactionManager">
+            <ref bean="transactionManager" />
+        </property>
+    </bean>
+    <!-- 配置库 配置Spring的事务管理器 -->
+    <bean id="configTransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="configDataSource"/>
+    </bean>
+    <!-- ========================================分隔线========================================= -->
     
+    
+   
    
     
    

@@ -26,5 +26,8 @@
 
 <dubbo:service interface="com.gigold.pay.demo.facade.DubboServiceFacade"
 		class="com.gigold.pay.demo.service.DubboServiceImpl"/>
+		
+<dubbo:service interface="com.gigold.pay.demo.facade.PubMsgServiceFacade"
+		class="com.gigold.pay.demo.service.PubMsgServiceImpl"/> 
 
 </beans>
