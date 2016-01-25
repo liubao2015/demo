@@ -64,6 +64,11 @@
 			<param-name>cookieAge</param-name>
 			<param-value>-1</param-value>
 		</init-param>
+		<!-- 如果不配置 则默认为  .gigold.com
+		  <init-param>
+			<param-name>cookieDomain</param-name>
+			<param-value>.lehome.cn</param-value>
+		</init-param> -->
 	</filter>
 	<filter-mapping>
 		<filter-name>MemcachedSessionFilter</filter-name>
